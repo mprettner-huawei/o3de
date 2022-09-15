@@ -358,9 +358,9 @@ namespace AZ
                     };
 
                     RHI::DispatchRaysItem dispatchRaysItem;
-                    dispatchRaysItem.m_width = diffuseProbeGrid->GetNumRaysPerProbe().m_rayCount;
-                    dispatchRaysItem.m_height = diffuseProbeGrid->GetTotalProbeCount();
-                    dispatchRaysItem.m_depth = 1;
+                    dispatchRaysItem.m_arguments.m_direct.m_width = diffuseProbeGrid->GetNumRaysPerProbe().m_rayCount;
+                    dispatchRaysItem.m_arguments.m_direct.m_height = diffuseProbeGrid->GetTotalProbeCount();
+                    dispatchRaysItem.m_arguments.m_direct.m_depth = 1;
                     dispatchRaysItem.m_rayTracingPipelineState = m_rayTracingPipelineState.get();
                     dispatchRaysItem.m_rayTracingShaderTable = m_rayTracingShaderTable.get();
                     dispatchRaysItem.m_shaderResourceGroupCount = RHI::ArraySize(shaderResourceGroups);

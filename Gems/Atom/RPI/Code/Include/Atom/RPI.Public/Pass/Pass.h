@@ -31,19 +31,29 @@
 #include <AzCore/std/containers/map.h>
 #include <AzCore/std/smart_ptr/unique_ptr.h>
 
-#define AZ_RPI_PASS(PASS_NAME)                                                      \
-    friend class PassFactory;                                                       \
-    friend class PassLibrary;                                                       \
-    friend class PassSystem;                                                        \
-    friend class PassTree;                                                          \
-    friend class ParentPass;                                                        \
-    friend class RenderPipeline;                                                    \
-    friend class UnitTest::PassTests;                                               \
+namespace AZ::RPI
+{
+    class PassFactory;
+    class PassLibrary;
+    class PassSystem;
+    class PassTree;
+    class ParentPass;
+    class RenderPipeline;
+}
 
 namespace UnitTest
 {
     class PassTests;
 }
+
+#define AZ_RPI_PASS(PASS_NAME)                                                      \
+    friend class ::AZ::RPI::PassFactory;                                            \
+    friend class ::AZ::RPI::PassLibrary;                                            \
+    friend class ::AZ::RPI::PassSystem;                                             \
+    friend class ::AZ::RPI::PassTree;                                               \
+    friend class ::AZ::RPI::ParentPass;                                             \
+    friend class ::AZ::RPI::RenderPipeline;                                         \
+    friend class ::UnitTest::PassTests;                                             \
 
 namespace AZ
 {
@@ -57,7 +67,6 @@ namespace AZ
     {
         class Pass;
         class PassTemplate;
-        class PassTree;
         struct PassRequest;
         struct PassValidationResults;
         class AttachmentReadback;

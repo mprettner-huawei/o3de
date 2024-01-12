@@ -183,6 +183,27 @@ namespace AZ
                             ResultCode(Tasks::Merge, Outcomes::Success), element));
                     }
                 }
+                else if (field.value.IsArray() && targetField != target.MemberEnd() && targetField->value.IsArray())
+                {
+                    for (const auto& sourceEntry : field.value.GetArray())
+                    {
+                        if (AZStd::find(targetField->value.Begin(), targetField->value.End(), sourceEntry) == targetField->value.End())
+                        {
+                            rapidjson::Value sourceValue;
+                            sourceValue.CopyFrom(sourceEntry, allocator, true);
+                            targetField->value.PushBack(AZStd::move(sourceValue), allocator);
+
+                            ScopedStackedString fieldNameScope{ element,
+                                                                AZStd::string_view(field.name.GetString(), field.name.GetStringLength()) };
+                            AZStd::string_view jsonPath = element.Get();
+                            result.Combine(settings.m_reporting(
+                                ReporterString::format(
+                                    R"(Successfully added array entry to "%.*s" using JSON Merge Patch)", AZ_STRING_ARG(jsonPath)),
+                                ResultCode(Tasks::Merge, Outcomes::Success),
+                                element));
+                        }
+                    }
+                }
                 else
                 {
                     if (targetField != target.MemberEnd())

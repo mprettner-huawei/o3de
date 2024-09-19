@@ -9,7 +9,6 @@
 
 #include <AzCore/EBus/EBus.h>
 #include <AzCore/Asset/AssetCommon.h>
-
 #include <Atom/RPI.Reflect/Shader/ShaderVariantKey.h>
 
 namespace AZ

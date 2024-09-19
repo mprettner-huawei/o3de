@@ -15,6 +15,7 @@
 
 #include <Atom/RPI.Reflect/Pass/CopyPassData.h>
 
+#include <Atom/RPI.Public/Configuration.h>
 #include <Atom/RPI.Public/Pass/Pass.h>
 
 namespace AZ
@@ -22,7 +23,7 @@ namespace AZ
     namespace RPI
     {
         //! A copy pass is a leaf pass (pass with no children) used for copying images and buffers on the GPU.
-        class CopyPass : public Pass
+        class ATOM_RPI_PUBLIC_API CopyPass : public Pass
         {
             AZ_RPI_PASS(CopyPass);
 

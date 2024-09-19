@@ -234,6 +234,8 @@ namespace AZ
             }
         }
 
+        StreamingImage::StreamingImage() = default;
+
         StreamingImage::~StreamingImage()
         {
             Shutdown();

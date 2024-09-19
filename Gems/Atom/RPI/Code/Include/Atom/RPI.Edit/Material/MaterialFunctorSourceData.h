@@ -10,6 +10,7 @@
 
 #include <AzCore/Asset/AssetCommon.h>
 #include <AzCore/std/smart_ptr/intrusive_base.h>
+#include <Atom/RPI.Edit/Configuration.h>
 #include <Atom/RPI.Reflect/Base.h>
 #include <Atom/RPI.Reflect/Material/MaterialTypeAsset.h>
 
@@ -30,7 +31,7 @@ namespace AZ
         //! This is an abstract base class for initializing MaterialFunctor objects.
         //! Material functors provide custom logic and calculations to configure shaders, render states, and more.
         //! See MaterialFunctor.h for details.
-        class MaterialFunctorSourceData
+        class ATOM_RPI_EDIT_API MaterialFunctorSourceData
             : public AZStd::intrusive_base
         {
             friend class JsonMaterialFunctorSourceDataSerializer;

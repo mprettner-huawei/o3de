@@ -14,6 +14,7 @@
 #include <Atom/RPI.Reflect/Material/MaterialPropertyDescriptor.h>
 #include <Atom/RPI.Reflect/Material/MaterialVersionUpdate.h>
 #include <Atom/RPI.Reflect/Material/MaterialTypeAssetCreator.h>
+#include <Atom/RPI.Edit/Configuration.h>
 #include <Atom/RPI.Edit/Material/MaterialFunctorSourceData.h>
 #include <Atom/RPI.Edit/Material/MaterialPropertyId.h>
 #include <Atom/RPI.Edit/Material/MaterialPropertySourceData.h>
@@ -30,7 +31,7 @@ namespace AZ
 
         //! This is a simple data structure for serializing in/out .materialtype source files.
         //! The .materialtype file has two slightly different formats: "abstract" and "direct". See enum Format below.
-        class MaterialTypeSourceData final
+        class ATOM_RPI_EDIT_API MaterialTypeSourceData final
         {
         public:
             AZ_TYPE_INFO(AZ::RPI::MaterialTypeSourceData, "{14085B6F-42E8-447D-9833-E1E45C2510B2}");

@@ -14,12 +14,12 @@ namespace AZ::RPI
 {
     ViewGroup::ViewGroup()
     {
-        m_cameraViews.resize(MaxViewTypes);
+        //m_cameraViews.resize(MaxViewTypes);
     }
 
     ViewGroup::~ViewGroup()
     {
-        m_cameraViews.clear();
+        //m_cameraViews.clear();
     }
 
     void ViewGroup::Init(const Descriptor& desc)

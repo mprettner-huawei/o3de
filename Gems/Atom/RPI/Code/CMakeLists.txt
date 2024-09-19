@@ -26,8 +26,12 @@ ly_add_target(
         ../Assets/atom_rpi_asset_files.cmake
         ${pal_source_dir}/platform_${PAL_PLATFORM_NAME_LOWERCASE}_files.cmake
         ${MASKED_OCCLUSION_CULLING_FILES}
-    TARGET_PROPERTIES
-        WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+    #TARGET_PROPERTIES
+    #    WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+    COMPILE_DEFINITIONS
+        PRIVATE
+            ATOM_RPI_PUBLIC_EXPORTS
+            ATOM_RPI_REFLECT_EXPORTS
     PLATFORM_INCLUDE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/Source/Platform/Common/${PAL_TRAIT_COMPILER_ID}/atom_rpi_public_${PAL_TRAIT_COMPILER_ID_LOWERCASE}.cmake
     INCLUDE_DIRECTORIES
@@ -45,6 +49,7 @@ ly_add_target(
             AZ::AtomCore
             Gem::Atom_RHI.Public
 )
+target_compile_options(${gem_name}.Public PRIVATE /wd4251 /wd4275)
 
 ################################################################################
 # Private
@@ -87,8 +92,11 @@ if(PAL_TRAIT_BUILD_HOST_TOOLS)
         NAMESPACE Gem
         FILES_CMAKE
             atom_rpi_edit_files.cmake
-        TARGET_PROPERTIES
-            WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+        #TARGET_PROPERTIES   ####
+        #    WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+        COMPILE_DEFINITIONS
+            PRIVATE
+                ATOM_RPI_EDIT_EXPORTS
         INCLUDE_DIRECTORIES
             PRIVATE
                 Source
@@ -101,6 +109,7 @@ if(PAL_TRAIT_BUILD_HOST_TOOLS)
                 Gem::Atom_RHI.Edit
                 Gem::${gem_name}.Public
     )
+    target_compile_options(${gem_name}.Edit PRIVATE /wd4251 /wd4275)
 
     ly_add_target(
         NAME ${gem_name}.Editor.Private.Object OBJECT
@@ -163,7 +172,7 @@ if(PAL_TRAIT_BUILD_TESTS_SUPPORTED)
         NAMESPACE Gem
         FILES_CMAKE
             atom_rpi_test_utils_files.cmake
-        TARGET_PROPERTIES
+        TARGET_PROPERTIES    ######
             WINDOWS_EXPORT_ALL_SYMBOLS TRUE
         INCLUDE_DIRECTORIES
             PUBLIC

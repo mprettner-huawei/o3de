@@ -355,7 +355,7 @@ namespace UnitTest
             {
                 const testing::TestInfo* test_info = ::testing::UnitTest::GetInstance()->current_test_info();
                 AZ_Printf("AssetManagerLoadingTest", "The DispatchEventsUntiTimeout function has been waiting for %llu seconds"
-                    " in test %s.%s", elapsedTime.count(), test_info->test_case_name(), test_info->name());
+                    " in test %s.%s", elapsedTime.count(), test_info->test_suite_name(), test_info->name());
                 // Update the next log time to be the next multiple of DefaultTimeout Seconds
                 // after current elapsed time
                 dispatchEventNextLogTime = AZStd::chrono::duration_cast<AZStd::chrono::seconds>(elapsedTime + logIntervalSeconds - ((elapsedTime + logIntervalSeconds) % logIntervalSeconds));

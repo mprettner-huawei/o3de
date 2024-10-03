@@ -12,11 +12,11 @@ class ScriptCanvasDeveloperTest
     : public ::testing::Test
 {
 protected:
-    static void SetUpTestCase()
+    static void SetUpTestSuite()
     {
     }
 
-    static void TearDownTestCase()
+    static void TearDownTestSuite()
     {
     }
 

@@ -64,8 +64,8 @@ namespace UnitTest
 
         const AZ::u32 LodLevel = 0;
 
-        static void SetUpTestCase();
-        static void TearDownTestCase();
+        static void SetUpTestSuite();
+        static void TearDownTestSuite();
 
     protected:
         AZStd::unique_ptr<AZ::Entity> CreateInactiveEditorEntity(const char* entityName);
@@ -79,7 +79,7 @@ namespace UnitTest
     AZStd::unique_ptr<SSystemGlobalEnvironment> NvClothEditorClothComponent::s_mockGEnv;
     SSystemGlobalEnvironment* NvClothEditorClothComponent::s_previousGEnv = nullptr;
 
-    void NvClothEditorClothComponent::SetUpTestCase()
+    void NvClothEditorClothComponent::SetUpTestSuite()
     {
         // override global environment
         s_previousGEnv = gEnv;
@@ -92,7 +92,7 @@ namespace UnitTest
 #endif
     }
 
-    void NvClothEditorClothComponent::TearDownTestCase()
+    void NvClothEditorClothComponent::TearDownTestSuite()
     {
         // restore global environment
         gEnv = s_previousGEnv;

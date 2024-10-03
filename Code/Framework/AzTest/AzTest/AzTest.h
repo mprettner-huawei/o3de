@@ -243,7 +243,7 @@ namespace AZ
                 {
                     result = "Pass";
                 }
-                std::string formattedResult = "[GTEST][" + result + "] " + test_info.test_case_name() + " " + test_info.name() + "\n";
+                std::string formattedResult = "[GTEST][" + result + "] " + test_info.test_suite_name() + " " + test_info.name() + "\n";
                 resultList.emplace_back(formattedResult);
             }
 
@@ -255,7 +255,7 @@ namespace AZ
                 }
                 if (unit_test.current_test_info())
                 {
-                    AZ_Printf("", "[GTEST] %s completed %u tests with u% failed test cases.", unit_test.current_test_info()->name(), unit_test.total_test_count(), unit_test.failed_test_case_count());
+                    AZ_Printf("", "[GTEST] %s completed %u tests with u% failed test cases.", unit_test.current_test_info()->name(), unit_test.total_test_count(), unit_test.failed_test_suite_count());
                 }
             }
         };

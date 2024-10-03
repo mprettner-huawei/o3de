@@ -44,7 +44,7 @@ namespace ScriptEventsTests
         static ScriptEventsTests::Application* s_application;
         static inline UnitTest::LeakDetectionBase s_leakDetection{};
 
-        static void SetUpTestCase()
+        static void SetUpTestSuite()
         {
             if (s_application == nullptr)
             {
@@ -79,7 +79,7 @@ namespace ScriptEventsTests
             AZ::TickBus::AllowFunctionQueuing(true);
         }
 
-        static void TearDownTestCase()
+        static void TearDownTestSuite()
         {
             AZ_Assert(s_application->FindEntity(AZ::SystemEntityId), "SystemEntity must exist");
 

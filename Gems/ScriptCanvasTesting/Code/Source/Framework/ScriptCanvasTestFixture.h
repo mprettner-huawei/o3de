@@ -50,7 +50,7 @@ namespace ScriptCanvasTests
 
         static ScriptCanvasTests::Application* s_application;
 
-        static void SetUpTestCase()
+        static void SetUpTestSuite()
         {
             s_asyncOperationActive = false;
 
@@ -117,7 +117,7 @@ namespace ScriptCanvasTests
 
         }
 
-        static void TearDownTestCase()
+        static void TearDownTestSuite()
         {
             // don't hang on to dangling assets
             AZ::Data::AssetManager::Instance().DispatchEvents();

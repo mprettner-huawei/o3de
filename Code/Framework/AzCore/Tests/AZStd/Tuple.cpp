@@ -65,7 +65,7 @@ namespace UnitTest
         AZStd::tuple<int, float, int>,
         AZStd::tuple<bool, bool, bool, bool>
     >;
-    TYPED_TEST_CASE(TupleTypedTest, TupleTestTypes);
+    TYPED_TEST_SUITE(TupleTypedTest, TupleTestTypes);
 
 
     //////////////////////////////////////////////////////////////////////////
@@ -1095,7 +1095,7 @@ namespace UnitTest
             : public LeakDetectionFixture
         {
         protected:
-            static void SetUpTestCase()
+            static void SetUpTestSuite()
             {
                 ExtendedTupleTest::m_count = 0;
             }

@@ -26,6 +26,9 @@ if(PAL_TRAIT_BUILD_TESTS_SUPPORTED)
         FILES_CMAKE
             AzTest/aztest_files.cmake
             ${pal_aztest_dir}/platform_${PAL_PLATFORM_NAME_LOWERCASE}_files.cmake
+        COMPILE_DEFINITIONS
+            PUBLIC
+                GTEST_REMOVE_LEGACY_TEST_CASEAPI_=1
         INCLUDE_DIRECTORIES
             PUBLIC
                 .

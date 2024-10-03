@@ -13,16 +13,12 @@ if(PAL_TRAIT_BUILD_TESTS_SUPPORTED)
     FetchContent_Declare(
         googletest
         GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG 2fe3bd994b3189899d93f1d5a881e725e046fdc2 # release-1.8.1
+        GIT_TAG b514bdc898e2951020cbdca1304b75f5950d1f59 # v1.15.2
     )
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE) # Prevent overriding the parent project's compiler/linker settings
     set(BUILD_GMOCK ON CACHE BOOL "" FORCE) # This setting builds gtest and gmock
-    set(BUILD_GTEST OFF CACHE BOOL "" FORCE) # This setting would only build gtest
     set(INSTALL_GTEST OFF CACHE BOOL "" FORCE) # Install target is not needed
     FetchContent_MakeAvailable(googletest)
-
-    ly_create_alias(NAME googletest::GTest NAMESPACE 3rdParty TARGETS gtest)
-    ly_create_alias(NAME googletest::GMock NAMESPACE 3rdParty TARGETS gmock)
 
     ly_add_target(
         NAME AzTest STATIC
@@ -36,8 +32,8 @@ if(PAL_TRAIT_BUILD_TESTS_SUPPORTED)
                 ${pal_aztest_dir}
         BUILD_DEPENDENCIES
             PUBLIC
-                3rdParty::googletest::GMock
-                3rdParty::googletest::GTest
+                GTest::gtest
+                GTest::gmock
                 3rdParty::GoogleBenchmark
                 AZ::AzCore
         PLATFORM_INCLUDE_FILES

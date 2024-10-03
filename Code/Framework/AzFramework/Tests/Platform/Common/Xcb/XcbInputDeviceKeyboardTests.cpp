@@ -30,6 +30,7 @@ namespace AzFramework
     public:
         void SetUp() override
         {
+            using testing::DoAll;
             using testing::Return;
             using testing::SetArgPointee;
             using testing::_;

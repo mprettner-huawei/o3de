@@ -9,6 +9,7 @@
 #pragma once
 
 #include <AzCore/Asset/AssetCommon.h>
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/RTTI/BehaviorContext.h>
 #include <AzCore/Serialization/SerializeContext.h>
 
@@ -57,7 +58,7 @@ namespace AZ {
 
         // Even though Asset<T> is a template class, we don't actually care about its underlying asset type
         // during serialization, so all types will share the same instance of the serializer.
-        static AssetSerializer  s_serializer;
+        AZCORE_API static AssetSerializer s_serializer;
 
     private:
 

@@ -9,6 +9,7 @@
 
 #include <AzCore/RTTI/RTTI.h>
 
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/Math/Crc.h>
 // For attributes
 #include <AzCore/Memory/SystemAllocator.h>
@@ -317,9 +318,9 @@ namespace AZ
         bool m_childClassOwned = false;
 
     protected:
-        static const AZ::Name s_typeField;
-        static const AZ::Name s_instanceField;
-        static const AZ::Name s_attributeField;
+        AZCORE_API static const AZ::Name s_typeField;
+        AZCORE_API static const AZ::Name s_instanceField;
+        AZCORE_API static const AZ::Name s_attributeField;
 
     private:
         AZStd::unique_ptr<void, ContextDeleter> m_contextData; ///< a generic value you can use to store extra data associated with the attribute

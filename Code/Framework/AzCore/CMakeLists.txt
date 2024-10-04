@@ -73,14 +73,18 @@ ly_add_target(
 )
 
 ly_add_target(
-    NAME AzCore STATIC
+    NAME AzCore ${PAL_TRAIT_MONOLITHIC_DRIVEN_LIBRARY_TYPE}
     NAMESPACE AZ
+    EXPORT_ALL_SYMBOLS
     FILES_CMAKE
         AzCore/azcore_files.cmake
         AzCore/std/azstd_files.cmake
         ${pal_dir}/platform_${PAL_PLATFORM_NAME_LOWERCASE}_files.cmake
     PLATFORM_INCLUDE_FILES
         ${pal_dir}/platform_${PAL_PLATFORM_NAME_LOWERCASE}.cmake
+    COMPILE_DEFINITIONS
+        PRIVATE
+            AZCORE_EXPORTS
     INCLUDE_DIRECTORIES
         PUBLIC
             .

@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include <AzCore/base.h>
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/Console/IConsoleTypes.h>
 #include <AzCore/std/string/string.h>
 #include <AzCore/std/containers/vector.h>
@@ -113,8 +114,8 @@ namespace AZ
 
         bool m_isDeferred = true;
 
-        static ConsoleFunctorBase* s_deferredHead;
-        static bool s_deferredHeadInvoked;
+        AZCORE_API static ConsoleFunctorBase* s_deferredHead;
+        AZCORE_API static bool s_deferredHeadInvoked;
 
         friend class Console;
     };

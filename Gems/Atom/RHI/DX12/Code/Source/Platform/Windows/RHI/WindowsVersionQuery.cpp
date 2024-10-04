@@ -9,6 +9,8 @@
 #include <RHI/WindowsVersionQuery.h>
 #include <AzCore/std/containers/vector.h>
 
+#pragma comment(lib, "Version.lib")
+
 namespace AZ
 {
     namespace DX12

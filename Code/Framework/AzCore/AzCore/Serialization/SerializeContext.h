@@ -100,8 +100,8 @@ namespace AZ::Serialize
 
     namespace Attributes
     {
-        extern const Crc32 EnumValueKey;
-        extern const Crc32 EnumUnderlyingType;
+        constexpr const Crc32 EnumValueKey = AZ_CRC_CE("EnumValueKey");
+        constexpr const Crc32 EnumUnderlyingType = AZ_CRC_CE("EnumUnderlyingType");
     }
 
     inline constexpr unsigned int VersionClassDeprecated = (unsigned int)-1;

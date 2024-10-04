@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/Math/Vector2.h>
 #include <AzCore/Math/Vector3.h>
 #include <AzCore/Math/Vector4.h>
@@ -148,7 +149,7 @@ namespace AZ
         Vector3 m_translation;
     };
 
-    extern const Transform g_transformIdentity;
+    AZCORE_API extern const Transform g_transformIdentity;
 
     //! Non-member functionality belonging to the AZ namespace
     //!

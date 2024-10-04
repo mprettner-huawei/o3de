@@ -7,6 +7,7 @@
 #
 
 set(FILES
+    ApiConfiguration.h
     AzCoreModule.h
     AzCoreModule.cpp
     Asset/AssetCommon.cpp

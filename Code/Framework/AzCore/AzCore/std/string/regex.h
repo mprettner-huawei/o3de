@@ -16,6 +16,7 @@
 #include <AzCore/std/exceptions.h>
 #include <AzCore/std/containers/vector.h>
 #include <AzCore/std/limits.h>
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/Memory/SystemAllocator.h>
 
 
@@ -423,7 +424,7 @@ namespace AZStd
             return (string_type(first, last));
         }
     private:
-        static const ClassNames<Element> m_names[];
+        AZCORE_API static const ClassNames<Element> m_names[];
     };
 
     // CLASS regex_traits<char>

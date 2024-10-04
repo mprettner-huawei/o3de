@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <AzCore/ApiConfiguration.h>
 #include <AzCore/Interface/Interface.h>
 #include <AzCore/Name/Internal/NameData.h>
 #include <AzCore/std/parallel/thread.h>
@@ -225,7 +226,7 @@ namespace AZ
 
         //! Describes the begin of the static list of Names that were initialized before the NameDictionary was available.
         //! On module initialization, these names are linked into the NameDictionary's static pool and created.
-        static Name* s_staticNameBegin;
+        AZCORE_API static Name* s_staticNameBegin;
         //! Describes the next name entry in the static list of Names.
         Name* m_nextName = nullptr;
         //! Describes the previous name entry in the static list of Names.

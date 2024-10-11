@@ -55,12 +55,6 @@ namespace PhysX
         typedef EntityPtr(* EntityFactoryFunc)(AzPhysics::SceneHandle, const AZ::Vector3&, const char*);
     }
 
-    class PhysXEntityFactoryParamTest
-        : public PhysXSpecificTest
-        , public ::testing::WithParamInterface<PhysXTests::EntityFactoryFunc>
-    {
-    };
-
     void SetCollisionLayerName(AZ::u8 index, const AZStd::string& name)
     {
         AZ::Interface<Physics::CollisionRequests>::Get()->SetCollisionLayerName(index, name);
@@ -279,9 +273,6 @@ namespace PhysX
             EXPECT_NEAR(boxGeometry.halfExtents.z, halfExtents.GetZ(), PhysXSpecificTest::tolerance);
         }
     }
-
-    auto entityFactories = { TestUtils::AddUnitTestObject<BoxColliderComponent>, TestUtils::AddUnitTestBoxComponentsMix };
-    INSTANTIATE_TEST_SUITE_P(DifferentBoxes, PhysXEntityFactoryParamTest, ::testing::ValuesIn(entityFactories));
 
     TEST_F(PhysXSpecificTest, RigidBody_GetNativeType_ReturnsPhysXRigidBodyType)
     {

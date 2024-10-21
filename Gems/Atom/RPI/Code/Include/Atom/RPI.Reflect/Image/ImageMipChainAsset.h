@@ -9,7 +9,7 @@
 #pragma once
 
 #include <Atom/RPI.Reflect/Asset/AssetHandler.h>
-
+#include <Atom/RPI.Reflect/Configuration.h>
 #include <Atom/RHI.Reflect/ImageSubresource.h>
 
 #include <Atom/RHI/StreamingImagePool.h>
@@ -34,7 +34,7 @@ namespace AZ
         //! a parent image mip slice to the local container slice index.
         //! This is an immutable, serialized asset. It can be either serialized-in or created dynamically using ImageMipChainAssetCreator.
         //! See RPI::ImageMipChain for runtime features based on this asset.
-        class ImageMipChainAsset final
+        class ATOM_RPI_REFLECT_API ImageMipChainAsset final
             : public Data::AssetData
         {
             friend class ImageMipChainAssetCreator;
@@ -119,7 +119,7 @@ namespace AZ
             AZStd::vector<uint8_t> m_imageData;
         };
 
-        class ImageMipChainAssetHandler final
+        class ATOM_RPI_REFLECT_API ImageMipChainAssetHandler final
             : public AssetHandler<ImageMipChainAsset>
         {
             using Base = AssetHandler<ImageMipChainAsset>;

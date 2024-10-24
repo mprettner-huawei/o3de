@@ -2244,11 +2244,65 @@ namespace AZ \
 { \
    template class EBus<a, b>; \
 }
+
 //! Instantiates an EBus class template using only the interface argument
 //! for both the EBus Interface and BusTraits template parameters
-
 #define DECLARE_EBUS_INSTANTIATION(a) \
 namespace AZ \
 { \
    template class EBus<a, a>; \
+}
+
+//! Declares an EBus class template, which uses EBusAddressPolicy::Single and is instantiated in a shared library, as extern using only the
+//! interface argument for both the EBus Interface and BusTraits template parameters
+#define DECLARE_EBUS_EXTERN_DLL_SINGLE_ADDRESS(a) \
+namespace AZ \
+{ \
+   extern template class EBus<a, a>;     \
+   AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+   AZ_PUSH_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   extern template class Internal::NonIdHandler<a, a, EBus<a, a>::BusesContainer>; \
+   AZ_POP_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+}
+
+//! Declares an EBus class template, which uses an address policy different from EBusAddressPolicy::Single and is instantiated in a shared
+//! library, as extern using only the interface argument for both the EBus Interface and BusTraits template parameters
+#define DECLARE_EBUS_EXTERN_DLL_MULTI_ADDRESS(a) \
+namespace AZ \
+{ \
+   extern template class EBus<a, a>;  \
+   AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+   AZ_PUSH_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   extern template class Internal::IdHandler<a, a, EBus<a, a>::BusesContainer>; \
+   extern template class Internal::MultiHandler<a, a, EBus<a, a>::BusesContainer>; \
+   AZ_POP_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+}
+
+//! Declares an EBus class template, which uses EBusAddressPolicy::Single and is instantiated in a shared library, as extern with both the
+//! interface and bus traits arguments
+#define DECLARE_EBUS_EXTERN_DLL_SINGLE_ADDRESS_WITH_TRAITS(a, b) \
+namespace AZ \
+{ \
+   extern template class EBus<a, b>;     \
+   AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+   AZ_PUSH_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   extern template class Internal::NonIdHandler<a, b, EBus<a, b>::BusesContainer>; \
+   AZ_POP_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+}
+
+//! Declares an EBus class template, which uses an address policy different from EBusAddressPolicy::Single and is instantiated in a shared
+//! library, as extern with both the interface and bus traits arguments
+#define DECLARE_EBUS_EXTERN_DLL_MULTI_ADDRESS_WITH_TRAITS(a, b) \
+namespace AZ \
+{ \
+   extern template class EBus<a, b>;  \
+   AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
+   AZ_PUSH_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   extern template class Internal::IdHandler<a, b, EBus<a, b>::BusesContainer>; \
+   extern template class Internal::MultiHandler<a, b, EBus<a, b>::BusesContainer>; \
+   AZ_POP_DISABLE_DLL_EXPORT_MEMBER_WARNING \
+   AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING \
 }

@@ -32,6 +32,11 @@ namespace AZ
         ;
     }
 
+    AZ_MATH_INLINE Color::Color(u8 r, u8 g, u8 b)
+        : Color(r, g, b, 255)
+    {
+    }
+
     AZ_MATH_INLINE Color::Color(u8 r, u8 g, u8 b, u8 a)
     {
         SetR8(r);

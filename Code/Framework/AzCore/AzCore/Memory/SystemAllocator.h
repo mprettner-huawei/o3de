@@ -24,7 +24,7 @@ namespace AZ
      * will be sub allocators, because we might have different memory system on consoles.
      * But the allocator utility system will use the system allocator.
      */
-    class SystemAllocator
+    class AZCORE_API SystemAllocator
         : public AllocatorBase
     {
     public:

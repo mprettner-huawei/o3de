@@ -23,7 +23,7 @@ namespace AZ::IO
 namespace AZ::Metrics
 {
     // Contains JsonTraceEventLogger specific configuration
-    struct JsonTraceEventLoggerConfig
+    struct AZCORE_API JsonTraceEventLoggerConfig
     {
         //! Name of the JsonTraceEventLogger
         AZStd::string_view m_loggerName;
@@ -34,7 +34,7 @@ namespace AZ::Metrics
         AZ::SettingsRegistryInterface* m_settingsRegistry{};
     };
 
-    class JsonTraceEventLogger
+    class AZCORE_API JsonTraceEventLogger
         : public IEventLogger
     {
     public:

@@ -29,7 +29,7 @@ namespace AZ
     //! An addressable container for a group of components. 
     //! An entity creates, initializes, activates, and deactivates its components.  
     //! An entity has an ID and, optionally, a name.  
-    class Entity
+    class AZCORE_API Entity
     {
         friend class JsonEntitySerializer;
 
@@ -320,7 +320,7 @@ namespace AZ
         void InvalidateDependencies();
 
         //! Contains a failed DependencySortResult code and a detailed message that can be presented to users.
-        struct FailedSortDetails
+        struct AZCORE_API FailedSortDetails
         {
             DependencySortResult m_code;
             AZStd::string m_message;

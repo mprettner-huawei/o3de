@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <AzCore/base.h>
 #include <stdio.h>
 
 namespace AZ
@@ -16,7 +17,7 @@ namespace AZ
      * Provides a better yet more computationally costly random implementation.
      * To be used in less frequent scenarios, i.e. to get a good seed.
      */
-    class BetterPseudoRandom_UnixLike
+    class AZCORE_API BetterPseudoRandom_UnixLike
     {
     public:
         BetterPseudoRandom_UnixLike();

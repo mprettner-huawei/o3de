@@ -30,7 +30,7 @@ namespace AZ
 {
     // Helper class that allows the Map to use specific Custom classes as keys into the map.
     // This provides the interface to the templated class.
-    class ScriptPropertyGenericClassMap
+    class AZCORE_API ScriptPropertyGenericClassMap
     {
     public:
         struct MapValuePair
@@ -317,7 +317,7 @@ namespace AZ
         AZStd::unordered_map<T, MapValuePair>     m_pairMapping;
     };
 
-    class ScriptPropertyTable
+    class AZCORE_API ScriptPropertyTable
         : public FunctionalScriptProperty
         , public ScriptPropertyWatcher
         , public ScriptPropertyWatcherBus::Handler

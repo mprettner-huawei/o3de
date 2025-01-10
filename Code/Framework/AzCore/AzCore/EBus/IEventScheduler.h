@@ -24,7 +24,7 @@ namespace AZ
     //! @class IEventScheduler
     //! @brief This is an AZ::Interface<> for managing scheduled events.
     //! Users should not require any direct interaction with this interface, ScheduledEvent is a self contained abstraction.
-    class IEventScheduler
+    class AZCORE_API IEventScheduler
     {
     public:
         AZ_RTTI(IEventScheduler, "{D8146217-6F93-47EB-9037-53BBFE429666}");

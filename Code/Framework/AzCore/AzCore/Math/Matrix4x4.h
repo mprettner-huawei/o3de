@@ -27,7 +27,7 @@ namespace AZ
     //!
     //! When multiplying with a Vector3, it assumes the w-component of the Vector3 is 1.0.
     //! Use the Multiply3x3 functions to multiply by the upper 3x3 submatrix only, e.g. for transforming normals.
-    class Matrix4x4
+    class AZCORE_API Matrix4x4
     {
     public:
 
@@ -282,23 +282,23 @@ namespace AZ
     //! Pre-multiplies the matrix by a vector. Assumes that the w-component of the Vector3 is 1.0, and returns the result as
     //! a Vector3, without calculating the result w-component. Use the Vector4 version of this function to get the full result.
     //! Note that this is not the usual multiplication order for transformations.
-    const Vector3 operator*(const Vector3& lhs, const Matrix4x4& rhs);
+    AZCORE_API const Vector3 operator*(const Vector3& lhs, const Matrix4x4& rhs);
 
     //! Pre-multiplies the matrix by a vector in-place. Assumes that the w-component of the Vector3 is 1.0, and returns the result as
     //! a Vector3, without calculating the result w-component. Use the Vector4 version of this function to get the full result.
     //! Note that this is not the usual multiplication order for transformations.
-    Vector3& operator*=(Vector3& lhs, const Matrix4x4& rhs);
+    AZCORE_API Vector3& operator*=(Vector3& lhs, const Matrix4x4& rhs);
 
     //! Pre-multiplies the matrix by a vector.
     //! Note that this is not the usual multiplication order for transformations.
-    const Vector4 operator*(const Vector4& lhs, const Matrix4x4& rhs);
+    AZCORE_API const Vector4 operator*(const Vector4& lhs, const Matrix4x4& rhs);
 
     //! Pre-multiplies the matrix by a vector in-place.
     //! Note that this is not the usual multiplication order for transformations.
-    Vector4& operator*=(Vector4& lhs, const Matrix4x4& rhs);
+    AZCORE_API Vector4& operator*=(Vector4& lhs, const Matrix4x4& rhs);
 
     //! Pre-multiplies the matrix by a scalar.
-    Matrix4x4 operator*(float lhs, const Matrix4x4& rhs);
+    AZCORE_API Matrix4x4 operator*(float lhs, const Matrix4x4& rhs);
 
 } // namespace AZ
 

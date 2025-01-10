@@ -97,7 +97,7 @@ namespace AZ::Statistics
             }
 
         private:
-            static StatisticalProfilerProxy* m_profilerProxy;
+            AZCORE_API static StatisticalProfilerProxy* m_profilerProxy;
             const StatisticalProfilerId m_profilerId;
             const StatIdType& m_statId;
             AZStd::chrono::steady_clock::time_point m_startTime;

@@ -13,7 +13,7 @@
 namespace AZ::Debug
 {
     // A budget collates per-frame resource utilization and memory for a particular category
-    class Budget final
+    class AZCORE_API Budget final
     {
     public:
         explicit Budget(const char* name);

@@ -17,7 +17,7 @@ namespace AZ
     class ReflectContext;
 
     //! N-dimensional vector class.
-    class VectorN final
+    class AZCORE_API VectorN final
     {
     public:
 
@@ -163,9 +163,9 @@ namespace AZ
 
     //! Operators that allow scalars as lhs operands.
     //! @{
-    VectorN operator+(float lhs, const VectorN& rhs);
-    VectorN operator-(float lhs, const VectorN& rhs);
-    VectorN operator*(float lhs, const VectorN& rhs);
+    AZCORE_API VectorN operator+(float lhs, const VectorN& rhs);
+    AZCORE_API VectorN operator-(float lhs, const VectorN& rhs);
+    AZCORE_API VectorN operator*(float lhs, const VectorN& rhs);
     //! @}
 }
 

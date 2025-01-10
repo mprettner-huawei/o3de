@@ -16,7 +16,7 @@ namespace AZ
     class ReflectContext;
 
     //! Matrix with ROW_COUNT rows and COL_COUNT columns.
-    class MatrixMxN final
+    class AZCORE_API MatrixMxN final
     {
     public:
 
@@ -154,18 +154,18 @@ namespace AZ
 
     //! Computes the outer product of two vectors to produce an MxN matrix.
     //! The dimensionality of the resulting matrix will be M = lhs.dimensionality, N = rhs.dimensionality
-    void OuterProduct(const VectorN& lhs, const VectorN& rhs, MatrixMxN& output);
+    AZCORE_API void OuterProduct(const VectorN& lhs, const VectorN& rhs, MatrixMxN& output);
 
     //! Multiplies the input vector of dimensionality RowCount, with the current matrix and stores the result in the provided output vector of dimensionality ColCount.
-    void VectorMatrixMultiply(const MatrixMxN& matrix, const VectorN& vector, VectorN& output);
+    AZCORE_API void VectorMatrixMultiply(const MatrixMxN& matrix, const VectorN& vector, VectorN& output);
 
     //! Left-multiplies the input vector of dimensionality ColCount, with the current matrix and stores the result in the provided output vector of dimensionality RowCount.
-    void VectorMatrixMultiplyLeft(const VectorN& vector, const MatrixMxN& matrix, VectorN& output);
+    AZCORE_API void VectorMatrixMultiplyLeft(const VectorN& vector, const MatrixMxN& matrix, VectorN& output);
 
     //! Multiplies the two input matrices to produce the output matrix.
     //! The column count of the right-hand side matrix must match the row count of the left-hand side matrix
     //! The output matrix must have dimensionality rhs.rowCount x lhs.colCount
-    void MatrixMatrixMultiply(const MatrixMxN& lhs, const MatrixMxN& rhs, MatrixMxN& output);
+    AZCORE_API void MatrixMatrixMultiply(const MatrixMxN& lhs, const MatrixMxN& rhs, MatrixMxN& output);
 }
 
 #include <AzCore/Math/MatrixMxN.inl>

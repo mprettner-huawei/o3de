@@ -19,7 +19,7 @@ namespace AZ
         ~ScriptPropertyWatcher() = default;
     };
 
-    class ScriptPropertyWatcherInterface
+    class AZCORE_API ScriptPropertyWatcherInterface
         : public EBusTraits
     {
     public:

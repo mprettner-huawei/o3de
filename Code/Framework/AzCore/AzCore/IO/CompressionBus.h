@@ -34,7 +34,7 @@ namespace AZ
         struct CompressionInfo;
         using DecompressionFunc = AZStd::function<bool(const CompressionInfo& info, const void* compressed, size_t compressedSize, void* uncompressed, size_t uncompressedBufferSize)>;
 
-        struct CompressionInfo
+        struct AZCORE_API CompressionInfo
         {
             CompressionInfo() = default;
             CompressionInfo(const CompressionInfo& rhs) = default;
@@ -63,7 +63,7 @@ namespace AZ
             bool m_isSharedPak = false; 
         };
 
-        class Compression
+        class AZCORE_API Compression
             : public AZ::EBusTraits
         {
         public:
@@ -79,7 +79,7 @@ namespace AZ
 
         namespace CompressionUtils
         {
-            bool FindCompressionInfo(CompressionInfo& info, const AZ::IO::PathView filePath);
+            AZCORE_API bool FindCompressionInfo(CompressionInfo& info, const AZ::IO::PathView filePath);
         }
     }
 }

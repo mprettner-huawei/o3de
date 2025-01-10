@@ -61,7 +61,7 @@ namespace AZ
     /**
      * TEMP
      */
-    class DataStream
+    class AZCORE_API DataStream
     {
     public:
         enum StreamType
@@ -83,19 +83,19 @@ namespace AZ
      * ObjectStream
      *
      */
-    class ObjectStream
+    class AZCORE_API ObjectStream
         : public DataStream
     {
     public:
 
-        struct Descriptor
+        struct AZCORE_API Descriptor
         {
         };
 
         /*
          * Handle used to cancel/query requests
          */
-        class Handle
+        class AZCORE_API Handle
         {
             friend class ObjectStream;
             friend class ObjectStreamInternal::ObjectStreamImpl;
@@ -148,7 +148,7 @@ namespace AZ
             
         };
 
-        struct FilterDescriptor
+        struct AZCORE_API FilterDescriptor
         {
             // boilerplate
             FilterDescriptor(const FilterDescriptor& rhs)

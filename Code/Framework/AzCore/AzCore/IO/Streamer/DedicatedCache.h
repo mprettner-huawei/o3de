@@ -27,7 +27,7 @@ namespace AZ::IO
         struct ReportData;
     } // namespace Requests
 
-    struct DedicatedCacheConfig final :
+    struct AZCORE_API DedicatedCacheConfig final :
         public IStreamerStackConfig
     {
         AZ_RTTI(AZ::IO::DedicatedCacheConfig, "{DF0F6029-02B0-464C-9846-524654335BCC}", IStreamerStackConfig);
@@ -48,7 +48,7 @@ namespace AZ::IO
         bool m_writeOnlyEpilog{ true };
     };
 
-    class DedicatedCache
+    class AZCORE_API DedicatedCache
         : public StreamStackEntry
     {
     public:

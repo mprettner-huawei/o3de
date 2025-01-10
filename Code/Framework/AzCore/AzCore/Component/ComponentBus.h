@@ -33,7 +33,7 @@ namespace AZ
      * Most components that derive from AZ::Component use this class to implement 
      * their buses, and then override the default AZ::EBusTraits to suit their needs. 
      */
-    class ComponentBus
+    class AZCORE_API ComponentBus
         : public AZ::EBusTraits
     {
     public:
@@ -83,7 +83,7 @@ namespace AZ
      * The EditContext can expose a component's properties to the editor's UI
      * regardless of whether the component has a configuration class.
      */
-    class ComponentConfig
+    class AZCORE_API ComponentConfig
     {
     public:
         AZ_CLASS_ALLOCATOR(ComponentConfig, SystemAllocator);
@@ -96,7 +96,7 @@ namespace AZ
      * A pair of entity and component IDs that are used to access an address 
      * of an AZ::EntityComponentBus.
      */
-    class EntityComponentIdPair 
+    class AZCORE_API EntityComponentIdPair
     {
     public:
 
@@ -189,7 +189,7 @@ namespace AZ
     // messages to be addressed to a specific instance of a component
     // rather than receiving messages for all components of the same type.
 
-    class EntityComponentBus
+    class AZCORE_API EntityComponentBus
         : public AZ::EBusTraits
     {
     public:

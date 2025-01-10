@@ -19,7 +19,7 @@ namespace AZ::Dom
 
     //! A patch operation that represents an atomic operation for mutating or validating a Value.
     //! PatchOperations can be created with helper methods in Patch. /see Patch
-    class PatchOperation final
+    class AZCORE_API PatchOperation final
     {
     public:
         //! The operation to perform.
@@ -118,7 +118,7 @@ namespace AZ::Dom
     class Patch;
 
     //! The current state of a Patch application operation.
-    struct PatchApplicationState
+    struct AZCORE_API PatchApplicationState
     {
         //! The outcome of the last operation, may be overridden to produce a different failure outcome.
         PatchOutcome m_outcome = AZ::Success();
@@ -135,14 +135,14 @@ namespace AZ::Dom
     namespace PatchApplicationStrategy
     {
         //! The default patching strategy. Applies all operations in a patch, but halts if any one operation fails.
-        void HaltOnFailure(PatchApplicationState& state);
+        AZCORE_API void HaltOnFailure(PatchApplicationState& state);
         //! Patching strategy that attemps to apply all operations in a patch, but ignores operation failures and continues.
-        void IgnoreFailureAndContinue(PatchApplicationState& state);
+        AZCORE_API void IgnoreFailureAndContinue(PatchApplicationState& state);
     } // namespace PatchApplicationStrategy
 
     //! A set of operations that can be applied to a Value to produce a new Value.
     //! \see PatchOperation
-    class Patch final
+    class AZCORE_API Patch final
     {
     public:
         using StrategyFunctor = AZStd::function<void(PatchApplicationState&)>;

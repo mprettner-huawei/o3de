@@ -48,7 +48,7 @@ namespace AZ
     };
     //! structure which stores the result of an operation to query if an AZ::TypeID
     //! is registered with a reflection context
-    struct RegisteredReflectionContextResult
+    struct AZCORE_API RegisteredReflectionContextResult
     {
         //! @return true if the type is reflected with any reflection context
         explicit operator bool() const;
@@ -71,7 +71,7 @@ namespace AZ
     //! Note on pointer memory: Objects created/destroyed by the Json Serialization for pointers require that the AZ_CLASS_ALLOCATOR is
     //!     declared and the object is created using aznew or memory is allocated using azmalloc. Without these the application may
     //!     crash if the Json Serialization tries to create or destroy an object pointed to by a pointer.
-    class JsonSerialization final
+    class AZCORE_API JsonSerialization final
     {
     public:
         static constexpr const char* TypeIdFieldIdentifier = "$type";

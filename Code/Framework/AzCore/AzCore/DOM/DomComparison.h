@@ -13,14 +13,14 @@
 namespace AZ::Dom
 {
     //! A set of patches for applying a change and doing the inverse operation.
-    struct PatchUndoRedoInfo
+    struct AZCORE_API PatchUndoRedoInfo
     {
         Patch m_forwardPatches;
         Patch m_inversePatches;
     };
 
     //! Parameters for GenerateHierarchicalDeltaPatch.
-    struct DeltaPatchGenerationParameters
+    struct AZCORE_API DeltaPatchGenerationParameters
     {
         static constexpr size_t NoReplace = AZStd::numeric_limits<size_t>::max();
         static constexpr size_t AlwaysFullReplace = 0;
@@ -42,6 +42,6 @@ namespace AZ::Dom
     //! Generates a set of patches such that m_forwardPatches.Apply(beforeState) shall produce a document equivalent to afterState, and
     //! a subsequent m_inversePatches.Apply(beforeState) shall produce the original document. This patch generation strategy does a
     //! hierarchical comparison and is not guaranteed to create the minimal set of patches required to transform between the two states.
-    PatchUndoRedoInfo GenerateHierarchicalDeltaPatch(
+    AZCORE_API PatchUndoRedoInfo GenerateHierarchicalDeltaPatch(
         const Value& beforeState, const Value& afterState, const DeltaPatchGenerationParameters& params = {});
 } // namespace AZ::Dom

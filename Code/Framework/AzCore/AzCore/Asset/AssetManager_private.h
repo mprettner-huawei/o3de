@@ -16,7 +16,7 @@ namespace AZ
     namespace Data
     {
         // Private system events - external systems should not listen for these
-        class AssetLoadEvents
+        class AZCORE_API AssetLoadEvents
             : public EBusTraits
         {
         public:

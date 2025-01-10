@@ -25,7 +25,7 @@ namespace AZ
          * will be output (that's critical). For example: Asserts will always print a header,
          * so no matter what you return we will have a minimal indication an assert is triggered.
          */
-        class TraceMessageEvents
+        class AZCORE_API TraceMessageEvents
             : public AZ::EBusTraits
         {
         public:

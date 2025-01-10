@@ -22,7 +22,7 @@ namespace AZ::Metrics
 
     AZ_DEFINE_ENUM_RELATIONAL_OPERATORS(EventLoggerId);
 
-    class IEventLoggerFactory
+    class AZCORE_API IEventLoggerFactory
     {
     public:
         AZ_RTTI(IEventLoggerFactory, "{3E98C565-3A1E-460E-B692-4FAE783952CC}");

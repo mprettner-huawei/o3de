@@ -39,7 +39,7 @@ namespace AZ
     //! 0 < t_simulationTickScale <  1 will cause time to pass slower than realtime, with t_simulationTickScale 0.1 being roughly 1/10th realtime
     //!     t_simulationTickScale == 1 will cause time to pass at roughly realtime
     //!     t_simulationTickScale >  1 will cause time to pass faster than normal, with t_simulationTickScale 10 being roughly 10x realtime
-    class ITime
+    class AZCORE_API ITime
     {
     public:
         AZ_RTTI(ITime, "{89D22C98-1450-44F1-952F-41284CC355F9}");

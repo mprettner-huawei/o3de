@@ -35,7 +35,7 @@ namespace AZ::Metrics::Internal
     //!
     //! * "/O3DE/Metrics/<EventLoggerName>/Active" - If set to false, the event logger will not record new events
     //!   If not set or true, the event logger will record events
-    struct SettingsKey_t
+    struct AZCORE_API SettingsKey_t
     {
         using StringType = AZStd::fixed_string<128>;
 
@@ -91,7 +91,7 @@ namespace AZ::Metrics
     //! https://eel.is/c++draft/containers#span.overview-4
     //! The reason why EventValue can't be complete is because it is a recursive type
     //! that has a reference to an array of child event values
-    struct EventArray
+    struct AZCORE_API EventArray
     {
         constexpr EventArray() = default;
         constexpr explicit EventArray(AZStd::span<EventValue> arrayValues);
@@ -106,7 +106,7 @@ namespace AZ::Metrics
 
     //! AZStd/std::span requires a complete type, so an EventField pointer and a size member
     //! is stored in the public API exposes a span interface
-    struct EventObject
+    struct AZCORE_API EventObject
     {
         constexpr EventObject() = default;
         constexpr explicit EventObject(AZStd::span<EventField> objectFields);
@@ -120,7 +120,7 @@ namespace AZ::Metrics
     };
 
     //! Implementation of Event Value struct used to reference JSON like types
-    struct EventValue
+    struct AZCORE_API EventValue
     {
         constexpr EventValue();
         template<class T, class Alt = AZStd::variant_detail::best_alternative_t<T,
@@ -154,7 +154,7 @@ namespace AZ::Metrics
     };
 
     //! Event field can now be defined now that EventValue is complete
-    struct EventField
+    struct AZCORE_API EventField
     {
         constexpr EventField();
         constexpr EventField(AZStd::string_view name, EventValue value);
@@ -194,7 +194,7 @@ namespace AZ::Metrics
         (ContentLeave, ')')
         );
 
-    struct EventDesc
+    struct AZCORE_API EventDesc
     {
         EventDesc();
 
@@ -266,7 +266,7 @@ namespace AZ::Metrics
 
 
     //! Base structure which represents the common args that event record event function accepts
-    struct EventArgs
+    struct AZCORE_API EventArgs
     {
         //! Name of the Event
         AZStd::string_view m_name;
@@ -280,7 +280,7 @@ namespace AZ::Metrics
     //! Duration events come in pairs(Begin and End), which can be used to mark a duration of time
     //! that has passed on single thrad
     //! https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.nso4gcezn7n1
-    struct DurationArgs
+    struct AZCORE_API DurationArgs
         : EventArgs
     {
         //! Id to associate with the event
@@ -291,7 +291,7 @@ namespace AZ::Metrics
     //! Complete events combines a pair of duration begin and end events into a single event
     //! It should be used to record an duration of time that has passed
     //! https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.lpfof2aylapb
-    struct CompleteArgs
+    struct AZCORE_API CompleteArgs
         : DurationArgs
     {
         //! Specifies the duration of the event in microseconds
@@ -311,7 +311,7 @@ namespace AZ::Metrics
     //! Structure which represents arguments associated with the complete instant events
     //! Instant events are used to record an event that has no duration associated with it
     //! https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.lenwiilchoxp
-    struct InstantArgs
+    struct AZCORE_API InstantArgs
         : EventArgs
     {
         //! Id to associate with the event
@@ -324,7 +324,7 @@ namespace AZ::Metrics
     //! Structure which represents arguments associated with counter trace events
     //! Counter events should be used track values as they change over time
     //! https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.msg3086636uq
-    struct CounterArgs
+    struct AZCORE_API CounterArgs
         : EventArgs
     {
         //! Id to associate with the event
@@ -334,7 +334,7 @@ namespace AZ::Metrics
     //! Structure for containing arguments for async start and end events, as well as async instant events
     //! Async events should be used to track asynchonous events, such as frames or asynchronous I/O
     //! https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview#heading=h.jh64i9l3vwa1
-    struct AsyncArgs
+    struct AZCORE_API AsyncArgs
         : EventArgs
     {
         //! Id to associate with the async event
@@ -345,7 +345,7 @@ namespace AZ::Metrics
     };
 
     //! IEventLogger API which supports recording event
-    class IEventLogger
+    class AZCORE_API IEventLogger
     {
     public:
         AZ_RTTI(IEventLogger, "{D39D09FA-DEA0-4874-BC45-4B310C3DD52E}");

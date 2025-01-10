@@ -60,7 +60,7 @@ namespace AZ
      * can become inactive when the tool loses focus.
      * @note Do not add a mutex to TickEvents. It is unnecessary and typically degrades performance.
      */
-    class TickEvents
+    class AZCORE_API TickEvents
         : public AZ::EBusTraits
     {
     public:
@@ -155,7 +155,7 @@ namespace AZ
      * requests.
      * Available requests are to get the time between ticks or the current time in seconds.
      */
-    class TickRequests
+    class AZCORE_API TickRequests
         : public AZ::EBusTraits
     {
     public:
@@ -188,7 +188,7 @@ namespace AZ
      * If timing matters, use TickEvents::OnTick() instead.
      * @note Do not add a mutex to SystemTickEvents. It is unnecessary and typically degrades performance.
      */
-    class SystemTickEvents : public AZ::EBusTraits
+    class AZCORE_API SystemTickEvents : public AZ::EBusTraits
     {
     public:
         //////////////////////////////////////////////////////////////////////////

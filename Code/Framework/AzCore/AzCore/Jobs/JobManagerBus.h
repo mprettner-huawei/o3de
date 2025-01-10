@@ -19,7 +19,7 @@ namespace AZ
      * be only one job manager at a time. This is why this but is set to support
      * only one client/listener.
      */
-    class JobManagerEvents
+    class AZCORE_API JobManagerEvents
         : public AZ::EBusTraits
     {
     public:

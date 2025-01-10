@@ -44,7 +44,7 @@ namespace AZ
     //! An entity's local transform is the entity's position relative to its
     //! parent entity. An entity's world transform is the entity's position
     //! within the entire game space.
-    class TransformInterface
+    class AZCORE_API TransformInterface
         : public ComponentBus
     {
     public:
@@ -310,7 +310,7 @@ namespace AZ
 
     //! @deprecated Use AZ::Event notifications on the main transform interface.
     //! Interface for AZ::TransformNotificationBus, which is the EBus that dispatches transform changes to listeners.
-    class TransformNotification
+    class AZCORE_API TransformNotification
         : public ComponentBus
     {
     public:
@@ -366,7 +366,7 @@ namespace AZ
     static constexpr TypeId EditorTransformComponentTypeId{ AZStd::string_view("{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0}") };
 
     //! Component configuration for the transform component.
-    class TransformConfig
+    class AZCORE_API TransformConfig
         : public ComponentConfig
     {
     public:
@@ -463,7 +463,7 @@ namespace AZ
     //! of parent entities use to get their children's entityIds.
     //! Only children of a particular entity connect to this bus because they use the
     //! parent's entityId to connect to the bus.
-    class TransformHierarchyInformation
+    class AZCORE_API TransformHierarchyInformation
         : public AZ::EBusTraits
     {
     public:

@@ -17,7 +17,7 @@ namespace AZ
 {
     struct Uuid;
 
-    class JsonDeserializer final
+    class AZCORE_API JsonDeserializer final
     {
         friend class JsonSerialization;
         friend class BaseJsonSerializer;
@@ -40,12 +40,12 @@ namespace AZ
             FailedToDetermine, // Type id couldn't be determined.
             FailedDueToMultipleTypeIds // Type id couldn't be determined because there were multiple options.
         };
-        struct LoadTypeIdResult
+        struct AZCORE_API LoadTypeIdResult
         {
             Uuid m_typeId;
             TypeIdDetermination m_determination;
         };
-        struct ElementDataResult
+        struct AZCORE_API ElementDataResult
         {
             void* m_data{ nullptr };
             const SerializeContext::ClassElement* m_info{ nullptr };

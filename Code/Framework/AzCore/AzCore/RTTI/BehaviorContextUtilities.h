@@ -14,13 +14,13 @@
 
 namespace AZ
 {
-    struct OverloadInfo
+    struct AZCORE_API OverloadInfo
     {
         size_t m_index = 0;
         size_t m_matchCount = 0;
     };
 
-    struct OverloadVariance
+    struct AZCORE_API OverloadVariance
     {
         AZStd::unordered_map<size_t, AZStd::vector<const BehaviorParameter*>> m_input;
         // the indices of inputs that make selection of overload unambiguous
@@ -29,17 +29,17 @@ namespace AZ
     };
 
 
-    AZ::BehaviorContext* GetDefaultBehaviorContext();
+    AZCORE_API AZ::BehaviorContext* GetDefaultBehaviorContext();
 
-    ExplicitOverloadInfo GetExplicitOverloads(const AZStd::string& name);
+    AZCORE_API ExplicitOverloadInfo GetExplicitOverloads(const AZStd::string& name);
 
-    ExplicitOverloadInfo GetExplicitOverloads(const BehaviorMethod& method);
+    AZCORE_API ExplicitOverloadInfo GetExplicitOverloads(const BehaviorMethod& method);
 
-    AZStd::string GetOverloadName(const BehaviorMethod&, size_t overloadIndex, AZStd::string nameOverride = {});
+    AZCORE_API AZStd::string GetOverloadName(const BehaviorMethod&, size_t overloadIndex, AZStd::string nameOverride = {});
 
-    AZStd::string GetOverloadName(const BehaviorMethod&, size_t overloadIndex, const OverloadVariance& variance, AZStd::string nameOverride = {});    
+    AZCORE_API AZStd::string GetOverloadName(const BehaviorMethod&, size_t overloadIndex, const OverloadVariance& variance, AZStd::string nameOverride = {});
 
-    AZStd::vector<AZStd::string> GetOverloadNames(const BehaviorMethod& method, AZStd::string nameOverride = {});
+    AZCORE_API AZStd::vector<AZStd::string> GetOverloadNames(const BehaviorMethod& method, AZStd::string nameOverride = {});
 
     /**
     /// returns a map of 0 based argument index --> vector<BehaviorParameter*>>. no two rows should have the same type
@@ -62,26 +62,26 @@ namespace AZ
         No,
         Yes
     };
-    OverloadVariance GetOverloadVariance(const BehaviorMethod& method, const AZStd::vector<AZStd::pair<const BehaviorMethod*, const BehaviorClass*>>& overloads, VariantOnThis onThis);
+    AZCORE_API OverloadVariance GetOverloadVariance(const BehaviorMethod& method, const AZStd::vector<AZStd::pair<const BehaviorMethod*, const BehaviorClass*>>& overloads, VariantOnThis onThis);
 
-    AZStd::vector<AZStd::pair<const BehaviorMethod*, const BehaviorClass*>> OverloadsToVector(const BehaviorMethod&, const BehaviorClass*);
+    AZCORE_API AZStd::vector<AZStd::pair<const BehaviorMethod*, const BehaviorClass*>> OverloadsToVector(const BehaviorMethod&, const BehaviorClass*);
 
-    void RemovePropertyGetterNameArtifacts(AZStd::string& name);
+    AZCORE_API void RemovePropertyGetterNameArtifacts(AZStd::string& name);
 
-    void RemovePropertySetterNameArtifacts(AZStd::string& name);
+    AZCORE_API void RemovePropertySetterNameArtifacts(AZStd::string& name);
 
-    void RemovePropertyNameArtifacts(AZStd::string& name);
+    AZCORE_API void RemovePropertyNameArtifacts(AZStd::string& name);
 
-    AZStd::string ReplaceCppArtifacts(AZStd::string_view sourceName);
+    AZCORE_API AZStd::string ReplaceCppArtifacts(AZStd::string_view sourceName);
 
-    void StripQualifiers(AZStd::string& name);
+    AZCORE_API void StripQualifiers(AZStd::string& name);
 
     /// returns true iff a and b have the same type and traits
-    bool TypeCompare(const BehaviorParameter& a, const BehaviorParameter& b);
+    AZCORE_API bool TypeCompare(const BehaviorParameter& a, const BehaviorParameter& b);
 
     // RAII class which scopes the creation and destruction of a BehaviorEBusHandler
     // contained within the supplied BehaviorEBus class
-    struct ScopedBehaviorEBusHandler
+    struct AZCORE_API ScopedBehaviorEBusHandler
     {
         ScopedBehaviorEBusHandler(const AZ::BehaviorEBus& behaviorEbus)
             : m_behaviorEbus{ behaviorEbus }

@@ -18,7 +18,7 @@ namespace AZ
 {
     //! @class Console
     //! A simple console class for providing text based variable and process interaction.
-    class Console final
+    class AZCORE_API Console final
         : public IConsole
     {
     public:
@@ -102,7 +102,7 @@ namespace AZ
         using CommandMap = AZStd::unordered_map<CVarFixedString, AZStd::vector<ConsoleFunctorBase*>>;
         CommandMap m_commands;
         AZ::SettingsRegistryInterface::NotifyEventHandler m_consoleCommandKeyHandler;
-        struct DeferredCommand
+        struct AZCORE_API DeferredCommand
         {
             using DeferredArguments = AZStd::vector<AZStd::string>;
             AZStd::string m_command;

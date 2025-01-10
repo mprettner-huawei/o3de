@@ -23,7 +23,7 @@ namespace AZ
      * of game objects. Otherwise all slices should be exported as list of entities (flat structure). There is an exception with the
      * "dynamic" slices, which should still be a flat list of entities that you "clone" for dynamic reuse.
      */
-    class SliceComponent
+    class AZCORE_API SliceComponent
         : public Component
         , public Data::AssetBus::MultiHandler
     {
@@ -41,7 +41,7 @@ namespace AZ
         /**
          * Points to a specific instantiation of a nested slice.
          */
-        class SliceInstanceAddress
+        class AZCORE_API SliceInstanceAddress
         {
         public:
             AZ_TYPE_INFO(SliceInstanceAddress, "{94142EA2-1319-44D5-82C8-A6D9D34A63BC}");
@@ -113,7 +113,7 @@ namespace AZ
          *
          * Care is taken to prune this datastructure so that no empty entries are stored.
          */
-        class DataFlagsPerEntity
+        class AZCORE_API DataFlagsPerEntity
         {
         public:
             AZ_CLASS_ALLOCATOR(DataFlagsPerEntity, AZ::SystemAllocator);
@@ -199,7 +199,7 @@ namespace AZ
         * GetInstanceEntityAncestry can be used to retrieve all ancestral entities for a given entity,
         * or in other words, retrieve the corresponding entity at each level of the slice data hierarchy.
         */
-        struct Ancestor
+        struct AZCORE_API Ancestor
         {
             Ancestor()
                 : m_entity(nullptr)
@@ -223,7 +223,7 @@ namespace AZ
         /**
          * Container for instantiated entities (which are not serialized), but build from the source object and deltas \ref DataPatch.
          */
-        struct InstantiatedContainer
+        struct AZCORE_API InstantiatedContainer
         {
             AZ_CLASS_ALLOCATOR(InstantiatedContainer, SystemAllocator);
             AZ_TYPE_INFO(InstantiatedContainer, "{05038EF7-9EF7-40D8-A29B-503D85B85AF8}");
@@ -252,7 +252,7 @@ namespace AZ
          * provided to SliceComponent::RestoreEntity() to restore the entity, at which point the owning
          * reference and instance will be re-created if needed.
          */
-        struct EntityRestoreInfo
+        struct AZCORE_API EntityRestoreInfo
         {
             AZ_TYPE_INFO(EntityRestoreInfo, "{AF2BE53F-C212-4BA4-880C-E1859BE75EA9}");
 
@@ -289,7 +289,7 @@ namespace AZ
          * Represents a slice instance in the current slice. For example if you refer to a base slice "lamppost"
          * you can have multiple instances of that slice (all of them with custom overrides) in the current slice.
          */
-        class SliceInstance
+        class AZCORE_API SliceInstance
         {
             friend class SliceComponent;
         public:
@@ -411,7 +411,7 @@ namespace AZ
          * Reference to a dependent slice. Each dependent slice can have one or more
          * instances in the current slice.
          */
-        class SliceReference
+        class AZCORE_API SliceReference
         {
             friend class SliceComponent;
         public:
@@ -556,7 +556,7 @@ namespace AZ
         /**
          * Map from entity ID to entity and slice address (if it comes from a slice).
          */
-        struct EntityInfo
+        struct AZCORE_API EntityInfo
         {
             EntityInfo()
                 : m_entity(nullptr)
@@ -1088,7 +1088,7 @@ namespace AZ
     namespace EntityUtils
     {
         // This class provides unrestricted access to the Entity's ID.
-        class EntityIdAccessor final : public AZ::Entity
+        class AZCORE_API EntityIdAccessor final : public AZ::Entity
         {
         public:
             AZ_CLASS_ALLOCATOR(EntityIdAccessor, SystemAllocator)
@@ -1131,7 +1131,7 @@ namespace AZ
         }
 
         // Deserialize a slice without using asset processor and read root entity from it
-        AZ::Entity* LoadRootEntityFromSlicePath(const char* filePath, SerializeContext* context);
+        AZCORE_API AZ::Entity* LoadRootEntityFromSlicePath(const char* filePath, SerializeContext* context);
     } // namespace EntityUtils
 
     namespace IdUtils

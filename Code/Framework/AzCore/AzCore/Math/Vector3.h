@@ -23,7 +23,7 @@ namespace AZ
     class ReflectContext;
 
     //! 3-dimensional vector class.
-    class Vector3
+    class AZCORE_API Vector3
     {
     public:
 
@@ -342,8 +342,8 @@ namespace AZ
 
     //! Non member functionality belonging to the AZ namespace.
     //! Degrees-Radians conversions on AZ::Vector3
-    AZ::Vector3 Vector3RadToDeg(const AZ::Vector3& radians);
-    AZ::Vector3 Vector3DegToRad(const AZ::Vector3& degrees);
+    AZCORE_API AZ::Vector3 Vector3RadToDeg(const AZ::Vector3& radians);
+    AZCORE_API AZ::Vector3 Vector3DegToRad(const AZ::Vector3& degrees);
 }
 
 #include <AzCore/Math/Vector3.inl>

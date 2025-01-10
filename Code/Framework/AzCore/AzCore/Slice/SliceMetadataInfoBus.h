@@ -19,7 +19,7 @@ namespace AZ
     /**
     * Bus for making requests to the slice metadata context component.
     */
-    class SliceMetadataInfoRequests
+    class AZCORE_API SliceMetadataInfoRequests
         : public ComponentBus
     {
     public:
@@ -53,7 +53,7 @@ namespace AZ
 
     using SliceMetadataInfoRequestBus = EBus<SliceMetadataInfoRequests>;
 
-    class SliceMetadataInfoManipulationRequests
+    class AZCORE_API SliceMetadataInfoManipulationRequests
         : public ComponentBus
     {
     public:

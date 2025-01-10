@@ -18,7 +18,7 @@ namespace AZ
     inline namespace Process
     {
         //! Stores Process Memory information data
-        struct ProcessMemInfo
+        struct AZCORE_API ProcessMemInfo
         {
             int64_t m_workingSet{};
             int64_t m_peakWorkingSet{};
@@ -30,6 +30,6 @@ namespace AZ
         /** Retrieve information about memory usage of current process.
          * @param meminfo Output parameter where information is saved.
          */
-        bool QueryMemInfo(ProcessMemInfo& meminfo);
+        AZCORE_API bool QueryMemInfo(ProcessMemInfo& meminfo);
     }
 }

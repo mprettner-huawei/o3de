@@ -17,7 +17,7 @@ namespace AZ
     //! JSON serializer for EnumConstant<EnumType>
     //! This is only used for marshaling the EnumConstant to and from a Dom Value
     //! in-memory. EnumConstant's are an editor only concept and shouldn't be persisted to the filesystem
-    class EnumConstantJsonSerializer : public BaseJsonSerializer
+    class AZCORE_API EnumConstantJsonSerializer : public BaseJsonSerializer
     {
     public:
         AZ_TYPE_INFO_WITH_NAME_DECL(EnumConstantJsonSerializer);

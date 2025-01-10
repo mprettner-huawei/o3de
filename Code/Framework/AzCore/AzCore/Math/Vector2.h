@@ -18,7 +18,7 @@ namespace AZ
     class ReflectContext;
 
     //! 2-dimensional vector class.
-    class Vector2
+    class AZCORE_API Vector2
     {
     public:
 
@@ -307,7 +307,7 @@ namespace AZ
     };
 
     //! Allows pre-multiplying by a float.
-    Vector2 operator*(float multiplier, const Vector2& rhs);
+    AZCORE_API Vector2 operator*(float multiplier, const Vector2& rhs);
 }
 
 #include <AzCore/Math/Vector2.inl>

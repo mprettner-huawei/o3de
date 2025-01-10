@@ -29,7 +29,7 @@ namespace AZ
 
     namespace Internal
     {
-        class WorkQueue final
+        class AZCORE_API WorkQueue final
         {
         public:
             void LocalInsert(Job *job);
@@ -60,27 +60,27 @@ namespace AZ
             : public JobManagerBase
         {
         public:
-            JobManagerWorkStealing(const JobManagerDesc& desc);
-            ~JobManagerWorkStealing();
+            AZCORE_API JobManagerWorkStealing(const JobManagerDesc& desc);
+            AZCORE_API ~JobManagerWorkStealing();
 
-            AZ_FORCE_INLINE bool IsAsynchronous() const { return m_isAsynchronous; }
+            AZCORE_API AZ_FORCE_INLINE bool IsAsynchronous() const { return m_isAsynchronous; }
 
-            void AddPendingJob(Job* job);
+            AZCORE_API void AddPendingJob(Job* job);
 
-            void SuspendJobUntilReady(Job* job);
+            AZCORE_API void SuspendJobUntilReady(Job* job);
 
-            void StartJobAndAssistUntilComplete(Job* job);
+            AZCORE_API void StartJobAndAssistUntilComplete(Job* job);
 
-            void ClearStats();
-            void PrintStats();
+            AZCORE_API void ClearStats();
+            AZCORE_API void PrintStats();
 
-            void CollectGarbage() {}
+            AZCORE_API void CollectGarbage() {}
 
-            Job* GetCurrentJob() const;
+            AZCORE_API Job* GetCurrentJob() const;
 
-            AZ::u32 GetNumWorkerThreads() const { return static_cast<AZ::u32>(m_workerThreads.size()); }
+            AZCORE_API AZ::u32 GetNumWorkerThreads() const { return static_cast<AZ::u32>(m_workerThreads.size()); }
 
-            AZ::u32 GetWorkerThreadId() const;
+            AZCORE_API AZ::u32 GetWorkerThreadId() const;
 
         private:
 

@@ -24,7 +24,7 @@ namespace AZ
     class StackedString;
     struct JsonImportSettings;
 
-    class SettingsRegistryImpl final
+    class AZCORE_API SettingsRegistryImpl final
         : public SettingsRegistryInterface
     {
     public:
@@ -145,7 +145,7 @@ namespace AZ
         //! These calls will then be invoked after the current signaling has completed
         //! This is done to avoid deadlock if another thread attempts to access register a notifier or signal one
         mutable AZStd::mutex m_signalMutex;
-        struct SignalNotifierArgs
+        struct AZCORE_API SignalNotifierArgs
         {
             FixedValueString m_jsonPath;
             SettingsType m_type;
@@ -164,7 +164,7 @@ namespace AZ
         bool m_useFileIo{};
 
 
-        struct ScopedMergeEvent
+        struct AZCORE_API ScopedMergeEvent
         {
             ScopedMergeEvent(SettingsRegistryImpl& settingsRegistry, MergeEventArgs mergeEventArgs);
             ~ScopedMergeEvent();

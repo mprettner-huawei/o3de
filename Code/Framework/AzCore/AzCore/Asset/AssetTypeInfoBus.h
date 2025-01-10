@@ -19,7 +19,7 @@ namespace AZ
      * Bus for acquiring information about a given asset type, usually serviced by the relevant asset handler.
      * Extensions, load parameters, custom stream settings, etc.
      */
-    class AssetTypeInfo
+    class AZCORE_API AssetTypeInfo
         : public AZ::EBusTraits
     {
     public:

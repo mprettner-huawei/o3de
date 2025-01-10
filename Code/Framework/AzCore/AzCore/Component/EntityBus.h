@@ -26,7 +26,7 @@ namespace AZ
      * Interface for the AZ::EntitySystemBus, which is the EBus that dispatches   
      * notification events about every entity in the system.
      */
-    class EntitySystemEvents
+    class AZCORE_API EntitySystemEvents
         : public AZ::EBusTraits
     {
     public:
@@ -92,7 +92,7 @@ namespace AZ
      * Interface for the AZ::EntityBus, which is the EBus for notification 
      * events dispatched by a specific entity.
      */
-    class EntityEvents
+    class AZCORE_API EntityEvents
         : public ComponentBus
     {
     private:

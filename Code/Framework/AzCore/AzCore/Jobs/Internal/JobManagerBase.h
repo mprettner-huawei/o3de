@@ -14,7 +14,7 @@ namespace AZ
 
     namespace Internal
     {
-        class JobManagerBase
+        class AZCORE_API JobManagerBase
         {
         public:
             static const AZ::u32 InvalidWorkerThreadId = ~0u;

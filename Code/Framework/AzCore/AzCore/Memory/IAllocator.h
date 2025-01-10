@@ -117,7 +117,7 @@ namespace AZ
     /**
      * Allocator interface base class
      */
-    class IAllocator
+    class AZCORE_API IAllocator
     {
     public:
         AZ_RTTI(IAllocator, "{0A3C59AE-169C-45F6-9423-3B8C89245E2E}");

@@ -24,7 +24,7 @@ namespace AZ
      * using the Hex facility. You are NOT REQUIRED to use it. You can use ScriptContext directly and
      * manage it anyway you like, but you will be provide ScriptAsset management too.
      */
-    class ScriptSystemComponent
+    class AZCORE_API ScriptSystemComponent
         : public Component
         , public ScriptSystemRequestBus::Handler
         , public SystemTickBus::Handler
@@ -125,7 +125,7 @@ namespace AZ
         };
         int m_defaultGarbageCollectorSteps;
 
-        struct ContextContainer
+        struct AZCORE_API ContextContainer
         {
             ScriptContext* m_context = nullptr;
             bool m_isOwner = true;

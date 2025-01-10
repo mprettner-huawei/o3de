@@ -11,7 +11,7 @@
 
 namespace AZ
 {
-    class UserSettingsComponentRequests
+    class AZCORE_API UserSettingsComponentRequests
         : public AZ::EBusTraits
     {
     public:
@@ -27,7 +27,7 @@ namespace AZ
     /**
      * UserSettingsComponent
      */
-    class UserSettingsComponent
+    class AZCORE_API UserSettingsComponent
         : public Component
         , protected UserSettingsComponentRequestBus::Handler
     {

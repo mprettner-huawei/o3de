@@ -26,7 +26,7 @@ namespace AZ
         /**
          * ProfilerNotifications provides a profiler event interface that can be used to update listeners on profiler status
          */
-        class ProfilerNotifications
+        class AZCORE_API ProfilerNotifications
             : public AZ::EBusTraits
         {
         public:
@@ -42,7 +42,7 @@ namespace AZ
         /**
         * ProfilerRequests provides an interface for making profiling system requests
         */
-        class ProfilerRequests
+        class AZCORE_API ProfilerRequests
         {
         public:
             AZ_RTTI(ProfilerRequests, "{90AEC117-14C1-4BAE-9704-F916E49EF13F}");
@@ -68,6 +68,6 @@ namespace AZ
 
         //! helper function for getting the profiler capture location from the settings registry that
         //! includes fallback handing in the event the registry value can't be determined
-        AZ::IO::FixedMaxPathString GetProfilerCaptureLocation();
+        AZCORE_API AZ::IO::FixedMaxPathString GetProfilerCaptureLocation();
     } // namespace Debug
 } // namespace AZ

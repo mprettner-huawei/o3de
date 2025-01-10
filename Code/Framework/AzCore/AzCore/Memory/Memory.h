@@ -94,7 +94,7 @@ namespace AZ
      * you to remove the template parameter and set you interface on demand.
      * of course at a cost of a pointer.
      */
-    class AZStdIAllocator
+    class AZCORE_API AZStdIAllocator
     {
     public:
         AZ_ALLOCATOR_DEFAULT_TRAITS
@@ -135,7 +135,7 @@ namespace AZ
     * you to remove the template parameter and retrieve the allocator from a supplied function
     * pointer
     */
-    class AZStdFunctorAllocator
+    class AZCORE_API AZStdFunctorAllocator
     {
     public:
         using pointer = void*;
@@ -172,19 +172,19 @@ namespace AZ
     };
 
     // {@ Global New/Delete Operators
-    [[nodiscard]] void* OperatorNew(std::size_t size);
-    void OperatorDelete(void* ptr);
-    void OperatorDelete(void* ptr, std::size_t size);
+    [[nodiscard]] AZCORE_API void* OperatorNew(std::size_t size);
+    AZCORE_API void OperatorDelete(void* ptr);
+    AZCORE_API void OperatorDelete(void* ptr, std::size_t size);
 
-    [[nodiscard]] void* OperatorNewArray(std::size_t size);
-    void OperatorDeleteArray(void* ptr);
-    void OperatorDeleteArray(void* ptr, std::size_t size);
+    [[nodiscard]] AZCORE_API void* OperatorNewArray(std::size_t size);
+    AZCORE_API void OperatorDeleteArray(void* ptr);
+    AZCORE_API void OperatorDeleteArray(void* ptr, std::size_t size);
 
 #if __cpp_aligned_new
-    [[nodiscard]] void* OperatorNew(std::size_t size, std::align_val_t align);
-    [[nodiscard]] void* OperatorNewArray(std::size_t size, std::align_val_t align);
-    void OperatorDelete(void* ptr, std::size_t size, std::align_val_t align);
-    void OperatorDeleteArray(void* ptr, std::size_t size, std::align_val_t align);
+    [[nodiscard]] AZCORE_API void* OperatorNew(std::size_t size, std::align_val_t align);
+    [[nodiscard]] AZCORE_API void* OperatorNewArray(std::size_t size, std::align_val_t align);
+    AZCORE_API void OperatorDelete(void* ptr, std::size_t size, std::align_val_t align);
+    AZCORE_API void OperatorDeleteArray(void* ptr, std::size_t size, std::align_val_t align);
 #endif
     // @}
 }

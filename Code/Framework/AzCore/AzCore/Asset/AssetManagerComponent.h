@@ -17,7 +17,7 @@ namespace AZ
     /**
      *
      */
-    class AssetManagerComponent
+    class AZCORE_API AssetManagerComponent
         : public Component
         , public SystemTickBus::Handler
     {

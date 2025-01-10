@@ -16,7 +16,7 @@ namespace AZ
 {
     //! JSON serializer for PointerObject
     //! This is only used for marshaling a pointer to/from a Dom Value in-meory
-    class PointerJsonSerializer : public BaseJsonSerializer
+    class AZCORE_API PointerJsonSerializer : public BaseJsonSerializer
     {
     public:
         AZ_TYPE_INFO_WITH_NAME_DECL(PointerJsonSerializer);

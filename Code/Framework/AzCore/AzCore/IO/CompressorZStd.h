@@ -24,7 +24,7 @@ namespace AZ
          * Header stored after the standard compression header.
          * This structure is padded and aligned don't change members.
          */
-        struct CompressorZStdHeader
+        struct AZCORE_API CompressorZStdHeader
         {
             AZ::u32     m_numSeekPoints;    ///< Number of seek points located at the end of the stream.
         };
@@ -33,7 +33,7 @@ namespace AZ
          * Seek points are stored at the end of the archive, we can have
          * 0..N seek points. If 0 the entire file is one seek point.
          */
-        struct CompressorZStdSeekPoint
+        struct AZCORE_API CompressorZStdSeekPoint
         {
             AZ::u64     m_compressedOffset;         ///< Location in the compressed stream of the sync point.
             AZ::u64     m_uncompressedOffset;       ///< Location in the decompressed stream.
@@ -42,7 +42,7 @@ namespace AZ
         /**
          * ZStd compressor per stream data.
          */
-        class CompressorZStdData
+        class AZCORE_API CompressorZStdData
             : public CompressorData
         {
         public:
@@ -69,7 +69,7 @@ namespace AZ
             SeekPointArray    m_seekPoints;               ///< List of seek points for the archive, we must have at least one!
         };
 
-        class CompressorZStd
+        class AZCORE_API CompressorZStd
             : public Compressor
         {
         public:

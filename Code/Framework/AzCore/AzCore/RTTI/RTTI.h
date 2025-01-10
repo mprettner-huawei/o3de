@@ -31,7 +31,7 @@ namespace AZ
       * The serializer retrieves an instance of the helper during type registration (when type information
       * is still available) and uses it to get RTTI information during serialization.
       */
-    class IRttiHelper
+    class AZCORE_API IRttiHelper
     {
     public:
         virtual ~IRttiHelper() = default;

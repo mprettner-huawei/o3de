@@ -33,7 +33,7 @@ namespace AZ
         * however, only one such entry will have 'canonical' set to true, meaning its the latest scheme.
         * UIs which enumerate assets should only use canonical assets.
         */
-        class AssetInfo
+        class AZCORE_API AssetInfo
         {
         public:
             AZ_TYPE_INFO(AssetInfo, "{E6D8372B-8419-4287-B478-1353709A972F}");
@@ -59,7 +59,7 @@ namespace AZ
          * Request bus for asset catalogs. Presently we expect only one asset catalog, so this
          * bus is limited to one handlers.
          */
-        class AssetCatalogRequests
+        class AZCORE_API AssetCatalogRequests
             : public AZ::EBusTraits
         {
         public:
@@ -243,7 +243,7 @@ namespace AZ
         /*
          * Events that AssetManager listens for
          */
-        class AssetManagerEvents
+        class AZCORE_API AssetManagerEvents
             : public EBusTraits
         {
         public:
@@ -278,7 +278,7 @@ namespace AZ
         /*
          * Events that the AssetManager broadcasts.
          */
-        class AssetManagerNotifications
+        class AZCORE_API AssetManagerNotifications
             : public EBusTraits
         {
         public:

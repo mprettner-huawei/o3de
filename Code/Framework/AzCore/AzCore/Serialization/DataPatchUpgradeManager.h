@@ -12,7 +12,7 @@
 namespace AZ
 {
     // Manages a collection of data patch upgrades
-    class DataPatchUpgradeManager
+    class AZCORE_API DataPatchUpgradeManager
     {
     public:
         // Upgrade a data patch. The address elements of the data patch must have type and version information. Patches created prior to the implementation of

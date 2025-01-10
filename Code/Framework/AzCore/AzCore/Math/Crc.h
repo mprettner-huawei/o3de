@@ -52,7 +52,7 @@ namespace AZ
     /**
      * Class for all of our crc32 types, better than just using ints everywhere.
      */
-    class Crc32
+    class AZCORE_API Crc32
     {
     public:
         AZ_TYPE_INFO_WITH_NAME_DECL(Crc32)

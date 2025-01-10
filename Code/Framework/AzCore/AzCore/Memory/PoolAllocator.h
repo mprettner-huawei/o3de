@@ -23,7 +23,7 @@ namespace AZ
      * Pool Allocator is NOT thread safe, if you if need a thread safe version
      * use ThreadPool Schema or do the sync yourself.
      */
-    class PoolSchema
+    class AZCORE_API PoolSchema
         : public IAllocator
     {
     public:
@@ -60,7 +60,7 @@ namespace AZ
         * IMPORTNAT: Keep in mind the thread pool allocator will create separate pools,
         * for each thread. So there will be some memory overhead, especially if you use fixed pool sizes.
         */
-    class ThreadPoolSchema
+    class AZCORE_API ThreadPoolSchema
         : public IAllocator
     {
     public:
@@ -196,7 +196,7 @@ namespace AZ
      * Pool Allocator is NOT thread safe, if you if need a thread safe version
      * use PoolAllocatorThreadSafe or do the sync yourself.
      */
-    class PoolAllocator
+    class AZCORE_API PoolAllocator
         : public Internal::PoolAllocatorHelper<PoolSchema>
     {
     public:
@@ -222,7 +222,7 @@ namespace AZ
      * Thread safe pool allocator. If you want to create your own thread pool heap,
      * inherit from ThreadPoolBase, as we need unique static variable for allocator type.
      */
-    class ThreadPoolAllocator final
+    class AZCORE_API ThreadPoolAllocator final
         : public ThreadPoolBase<ThreadPoolAllocator>
     {
     public:

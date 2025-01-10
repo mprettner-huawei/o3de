@@ -25,7 +25,7 @@ namespace AZ
 
     //! The basic transformation class, represented using a quaternion rotation, float scale and vector translation.
     //! By design, cannot represent skew transformations.
-    class Transform
+    class AZCORE_API Transform
     {
     public:
 
@@ -148,26 +148,26 @@ namespace AZ
         Vector3 m_translation;
     };
 
-    extern const Transform g_transformIdentity;
+    AZCORE_API extern const Transform g_transformIdentity;
 
     //! Non-member functionality belonging to the AZ namespace
     //!
     //! Converts a transform to corresponding component-wise Euler angles.
     //! @param Transform transform The input transform to decompose.
     //! @return Vector3 A vector containing component-wise rotation angles in degrees.
-    Vector3 ConvertTransformToEulerDegrees(const Transform& transform);
-    Vector3 ConvertTransformToEulerRadians(const Transform& transform);
+    AZCORE_API Vector3 ConvertTransformToEulerDegrees(const Transform& transform);
+    AZCORE_API Vector3 ConvertTransformToEulerRadians(const Transform& transform);
 
     //! Create a transform from Euler Angles (e.g. rotation angles in X, Y, and Z)
     //! @param Vector3 eulerDegrees A vector containing component-wise rotation angles in degrees.
     //! @return Transform A transform made from the rotational components.
-    Transform ConvertEulerDegreesToTransform(const Vector3& eulerDegrees);
+    AZCORE_API Transform ConvertEulerDegreesToTransform(const Vector3& eulerDegrees);
 
     //! Create a rotation transform from Euler angles in radian around each base axis.
     //!        This version uses precise sin/cos for a more accurate conversion.
     //! @param Vector3 eulerDegrees A vector containing component-wise rotation angles in radian.
     //! @return Transform A transform made from the composite of rotations first around z-axis, and y-axis and then x-axis.
-    Transform ConvertEulerRadiansToTransform(const Vector3& eulerRadians);
+    AZCORE_API Transform ConvertEulerRadiansToTransform(const Vector3& eulerRadians);
 } // namespace AZ
 
 #include <AzCore/Math/Transform.inl>

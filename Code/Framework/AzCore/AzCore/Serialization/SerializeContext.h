@@ -122,7 +122,7 @@ namespace AZ
      * for all related information when you declare you data
      * for serialization. In addition it will handle data version control.
      */
-    class SerializeContext
+    class AZCORE_API SerializeContext
         : public ReflectContext
     {
     public:
@@ -228,7 +228,7 @@ namespace AZ
         /**
          * Debug stack element when we enumerate a class hierarchy so we can report better errors!
          */
-        struct DbgStackEntry
+        struct AZCORE_API DbgStackEntry
         {
             void  ToString(AZStd::string& str) const;
             const void*         m_dataPtr;
@@ -238,7 +238,7 @@ namespace AZ
             const ClassElement* m_classElement;
         };
 
-        class ErrorHandler
+        class AZCORE_API ErrorHandler
         {
         public:
 
@@ -468,7 +468,7 @@ namespace AZ
             const DeprecatedNameVisitWrapper& callback
             );
     public:
-        class ClassBuilder
+        class AZCORE_API ClassBuilder
         {
             friend class SerializeContext;
             ClassBuilder(SerializeContext* context, const UuidToClassMap::iterator& classMapIter);
@@ -606,7 +606,7 @@ namespace AZ
          *      ->Value("Second",&MyEnum::Second)
          *      ->Value("Fourth",&MyEnum::Fourth);
          */
-        class EnumBuilder
+        class AZCORE_API EnumBuilder
         {
             friend class SerializeContext;
             EnumBuilder(SerializeContext* context, const UuidToClassMap::iterator& classMapIter);
@@ -681,10 +681,10 @@ namespace AZ
         class PerModuleGenericClassInfo;
         AZStd::unordered_set<PerModuleGenericClassInfo*>  m_perModuleSet; ///< Stores the static PerModuleGenericClass structures keeps track of reflected GenericClassInfo per module
 
-        friend PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
+        AZCORE_API friend PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
     };
 
-    SerializeContext::PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
+    AZCORE_API SerializeContext::PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
 } // namespace AZ
 
 namespace AZ
@@ -697,7 +697,7 @@ namespace AZ
     };
 
     // Base type used for single-node version upgrades
-    class SerializeContext::DataPatchUpgrade
+    class AZCORE_API SerializeContext::DataPatchUpgrade
     {
     public:
         AZ_CLASS_ALLOCATOR(DataPatchUpgrade, SystemAllocator);
@@ -745,7 +745,7 @@ namespace AZ
     // Binary predicate for ordering per-version upgrades
     // When multiple upgrades exist from a particular version, we only want
     // to apply the one that upgrades to the maximum possible version.
-    struct SerializeContext::NodeUpgradeSortFunctor
+    struct AZCORE_API SerializeContext::NodeUpgradeSortFunctor
     {
         // Provides sorting of lists of node upgrade pointers
         bool operator()(const DataPatchUpgrade* LHS, const DataPatchUpgrade* RHS)
@@ -768,7 +768,7 @@ namespace AZ
     // A class to maintain and apply all of the per-field node upgrades that apply to one single field.
     // Performs error checking when building the field array, manages the lifetime of the upgrades, and
     // deals with application of the upgrades to both nodes and raw values.
-    class SerializeContext::DataPatchUpgradeHandler
+    class AZCORE_API SerializeContext::DataPatchUpgradeHandler
     {
     public:
         DataPatchUpgradeHandler()
@@ -785,7 +785,7 @@ namespace AZ
         DataPatchFieldUpgrades m_upgrades;
     };
 
-    class SerializeContext::DataPatchNameUpgrade : public DataPatchUpgrade
+    class AZCORE_API SerializeContext::DataPatchNameUpgrade : public DataPatchUpgrade
     {
     public:
         AZ_CLASS_ALLOCATOR(DataPatchNameUpgrade, SystemAllocator);
@@ -875,7 +875,7 @@ namespace AZ::Serialize
      * Class element. When a class doesn't have a direct serializer,
      * he is an aggregation of ClassElements (which can be another classes).
      */
-    struct ClassElement
+    struct AZCORE_API ClassElement
     {
         AZ_TYPE_INFO_WITH_NAME_DECL(ClassElement);
         enum Flags
@@ -923,7 +923,7 @@ namespace AZ::Serialize
      * Class Data contains the data/info for each registered class
      * all if it members (their offsets, etc.), creator, version converts, etc.
      */
-    class ClassData
+    class AZCORE_API ClassData
     {
         friend SerializeContext;
         using ClassElementArray = AZStd::vector<ClassElement>;
@@ -1002,7 +1002,7 @@ namespace AZ::Serialize
     /**
      * Interface for creating and destroying object from the serializer.
      */
-    class IObjectFactory
+    class AZCORE_API IObjectFactory
     {
     public:
 
@@ -1024,7 +1024,7 @@ namespace AZ::Serialize
      * of data. Once this implementation is detected, the class will not be drilled
      * down. We will assume this implementation covers the full class.
      */
-    class IDataSerializer
+    class AZCORE_API IDataSerializer
     {
     public:
         static IDataSerializerDeleter CreateDefaultDeleteDeleter();
@@ -1057,7 +1057,7 @@ namespace AZ::Serialize
     * Interface for a data container. This might be an AZStd container or just a class with
     * elements defined in some template manner (usually with templates :) )
     */
-    class IDataContainer
+    class AZCORE_API IDataContainer
     {
     public:
         AZ_TYPE_INFO_WITH_NAME_DECL(IDataContainer);
@@ -1215,7 +1215,7 @@ namespace AZ::Serialize
      * since it is "reading from" the objects.  However, if you pass the ENUM_ACCESS_FOR_WRITE flag, it will INSTEAD call OnWriteBegin
      * and OnWriteEnd for the c++ objects it is visiting, despite the fact that you are technically enumerating them.
      */
-    class IEventHandler
+    class AZCORE_API IEventHandler
     {
     public:
         virtual ~IEventHandler() {}
@@ -1254,7 +1254,7 @@ namespace AZ::Serialize
      * derived class to base class casting is taken care of through the RTTI system so those relations should not be
      * check within this class
      */
-    class IDataConverter
+    class AZCORE_API IDataConverter
     {
     public:
         virtual ~IDataConverter() = default;
@@ -1287,7 +1287,7 @@ namespace AZ::Serialize
       * An element representing an int will have a data value, but an element
       * representing a vector or class will not (their contents are stored in sub-elements).
       */
-    struct DataElement
+    struct AZCORE_API DataElement
     {
         DataElement();
         ~DataElement();
@@ -1322,7 +1322,7 @@ namespace AZ::Serialize
      * For example, a class would be represented as a parent node
      * with its member variables in sub nodes.
      */
-    class DataElementNode
+    class AZCORE_API DataElementNode
     {
         friend class AZ::ObjectStreamInternal::ObjectStreamImpl;
         friend class AZ::DataOverlayTarget;
@@ -1416,7 +1416,7 @@ namespace AZ::Serialize
     * EnumerateInstance is used in high frequency performance-sensitive scenarios, and this ensures
     * minimal interaction with the memory manager for things like bound functors.
     */
-    struct EnumerateInstanceCallContext
+    struct AZCORE_API EnumerateInstanceCallContext
     {
         AZ_TYPE_INFO_WITH_NAME_DECL(EnumerateInstanceCallContext);
         EnumerateInstanceCallContext(const SerializeContext::BeginElemEnumCB& beginElemCB,
@@ -1483,7 +1483,7 @@ namespace AZ
     * For specialized classes the Specialized Id is normally made up of the concatenation of the Template Class Uuid
     * and the Template Arguments Uuids using a SHA-1.
     */
-    class GenericClassInfo
+    class AZCORE_API GenericClassInfo
     {
     public:
         GenericClassInfo()
@@ -2205,7 +2205,7 @@ namespace AZ
     * PerModuleGenericClassInfo tracks module specific reflections of GenericClassInfo for each serializeContext
     * registered with this module(.dll)
     */
-    class SerializeContext::PerModuleGenericClassInfo final
+    class AZCORE_API SerializeContext::PerModuleGenericClassInfo final
     {
     public:
         using GenericInfoModuleMap = AZStd::unordered_map<AZ::Uuid, AZ::GenericClassInfo*>;

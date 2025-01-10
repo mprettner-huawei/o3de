@@ -26,7 +26,7 @@ namespace AZ
     //!  #include <AzCore/Console/ILogger.h>
     //!  AZLOG_INFO("Your message here");
     //!  AZLOG_WARN("Your warn message here");
-    class ILogger
+    class AZCORE_API ILogger
     {
     public:
         AZ_RTTI(ILogger, "{69950316-3626-4C9D-9DCA-2E7ABF84C0A9}");

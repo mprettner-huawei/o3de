@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: Apache-2.0 OR MIT
  *
  */
+
+#include <AzCore/IO/AnsiTerminalUtils.h>
 #include <AzCore/PlatformIncl.h>
 
 #include <io.h>

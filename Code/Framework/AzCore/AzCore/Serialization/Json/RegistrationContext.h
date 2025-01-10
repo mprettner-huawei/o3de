@@ -17,7 +17,7 @@
 
 namespace AZ
 {
-    class JsonRegistrationContext
+    class AZCORE_API JsonRegistrationContext
         : public ReflectContext
     {
     public:
@@ -52,7 +52,7 @@ namespace AZ
             }
         }
 
-        class SerializerBuilder
+        class AZCORE_API SerializerBuilder
         {
             friend class JsonRegistrationContext;
         public:

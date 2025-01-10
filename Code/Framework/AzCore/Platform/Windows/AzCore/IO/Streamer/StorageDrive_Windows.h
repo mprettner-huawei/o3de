@@ -29,11 +29,11 @@ namespace AZ::IO::Requests
 
 namespace AZ::IO
 {
-    class StorageDriveWin
+    class AZCORE_API StorageDriveWin
         : public StreamStackEntry
     {
     public:
-        struct ConstructionOptions
+        struct AZCORE_API ConstructionOptions
         {
             ConstructionOptions();
 

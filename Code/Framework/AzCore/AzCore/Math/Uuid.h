@@ -21,7 +21,7 @@ typedef _GUID GUID;
 
 namespace AZ
 {
-    struct Uuid
+    struct AZCORE_API Uuid
     {
         enum Variant
         {

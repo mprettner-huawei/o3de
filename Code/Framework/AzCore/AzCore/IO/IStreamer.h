@@ -30,7 +30,7 @@ namespace AZ::IO
     /**
      * Data Streamer Interface
      */
-    class IStreamer
+    class AZCORE_API IStreamer
     {
     public:
         AZ_RTTI(IStreamer, "{0015594D-6EA5-4309-A2AD-1D704F264A66}");

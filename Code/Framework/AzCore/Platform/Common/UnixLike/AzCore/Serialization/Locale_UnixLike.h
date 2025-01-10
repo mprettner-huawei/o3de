@@ -17,7 +17,7 @@ namespace AZ
 {
     namespace Locale
     {
-        class ScopedSerializationLocale_Platform
+        class AZCORE_API ScopedSerializationLocale_Platform
         {
             public:
                 void Activate();

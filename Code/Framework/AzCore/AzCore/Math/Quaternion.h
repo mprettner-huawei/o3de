@@ -12,7 +12,7 @@
 
 namespace AZ
 {
-    class Quaternion
+    class AZCORE_API Quaternion
     {
     public:
 
@@ -348,41 +348,41 @@ namespace AZ
     //! Create, from a quaternion, a set of Euler angles of rotations around first z-axis, then y-axis and then x-axis.
     //! @param q a quaternion representing the rotation
     //! @return A vector containing component-wise rotation angles in degrees.
-    Vector3 ConvertQuaternionToEulerDegrees(const Quaternion& q);
+    AZCORE_API Vector3 ConvertQuaternionToEulerDegrees(const Quaternion& q);
 
     //! O3DE_DEPRECATION_NOTICE(GHI-10929)
     //! @deprecated use GetEulerRadiansXYZ()
     //! Create, from a quaternion, a set of Euler angles of rotations around first z-axis, then y-axis and then x-axis.
     //! @param q a quaternion representing the rotation
     //! @return A vector containing component-wise rotation angles in radians.
-    Vector3 ConvertQuaternionToEulerRadians(const Quaternion& q);
+    AZCORE_API Vector3 ConvertQuaternionToEulerRadians(const Quaternion& q);
 
     //! O3DE_DEPRECATION_NOTICE(GHI-10929)
     //! @deprecated use Quaternion::CreateFromEulerRadiansXYZ()
     //! @param eulerRadians A vector containing component-wise rotation angles in radians.
     //! @return a quaternion made from composition of rotations around principle axes.
-    Quaternion ConvertEulerRadiansToQuaternion(const Vector3& eulerRadians);
+    AZCORE_API Quaternion ConvertEulerRadiansToQuaternion(const Vector3& eulerRadians);
 
     //! O3DE_DEPRECATION_NOTICE(GHI-10929)
     //! @deprecated use Quaternion::CreateFromEulerDegreesXYZ()
     //! @param eulerDegrees A vector containing component-wise rotation angles in degrees.
     //! @return a quaternion made from composition of rotations around principle axes.
-    Quaternion ConvertEulerDegreesToQuaternion(const Vector3& eulerDegrees);
+    AZCORE_API Quaternion ConvertEulerDegreesToQuaternion(const Vector3& eulerDegrees);
 
     //! Populate axis and angle of rotation from Quaternion.
     //! @param[in] quat A source quaternion
     //! @param[out] outAxis A Vector3 defining the rotation axis.
     //! @param[out] outAngle A float rotation angle around the axis in radians.
-    void ConvertQuaternionToAxisAngle(const Quaternion& quat, Vector3& outAxis, float& outAngle);
+    AZCORE_API void ConvertQuaternionToAxisAngle(const Quaternion& quat, Vector3& outAxis, float& outAngle);
 
     //! Scalar multiplication of a quaternion, allows scalar * quaternion syntax.
     //! @param multiplier the scalar value to use.
     //! @param rhs the quaternion to scale.
     //! @return a quaternion where each component of rhs is scaled by multiplier.
-    Quaternion operator*(float multiplier, const Quaternion& rhs);
+    AZCORE_API Quaternion operator*(float multiplier, const Quaternion& rhs);
 
     //! Helper method to quickly determine whether or not a given transform includes a scale
-    bool IsUnit(const Transform& t);
+    AZCORE_API bool IsUnit(const Transform& t);
 }
 
 #include <AzCore/Math/Quaternion.inl>

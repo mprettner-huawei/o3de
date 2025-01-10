@@ -14,7 +14,7 @@
 namespace AZ
 {
     //! Provides flattened serialization of Name objects as a simple string.
-    class NameSerializer : public SerializeContext::IDataSerializer
+    class AZCORE_API NameSerializer : public SerializeContext::IDataSerializer
     {
     public:
 

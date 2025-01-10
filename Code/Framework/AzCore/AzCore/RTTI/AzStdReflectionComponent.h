@@ -11,7 +11,7 @@
 
 namespace AZ
 {
-    class AzStdReflectionComponent
+    class AZCORE_API AzStdReflectionComponent
         : public AZ::Component
     {
     public:

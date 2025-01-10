@@ -25,7 +25,7 @@ namespace AZ
     /**
      * Public interface for accessing modules.
      */
-    struct ModuleData
+    struct AZCORE_API ModuleData
     {
         virtual ~ModuleData() = default;
 
@@ -55,7 +55,7 @@ namespace AZ
     /**
      * Describes a dynamic module used by the application.
      */
-    class DynamicModuleDescriptor
+    class AZCORE_API DynamicModuleDescriptor
     {
     public:
         AZ_TYPE_INFO(DynamicModuleDescriptor, "{D2932FA3-9942-4FD2-A703-2E750F57C003}");
@@ -74,7 +74,7 @@ namespace AZ
     using CreateStaticModulesCallback = AZStd::function<void(AZStd::vector<AZ::Module*>&)>;
 
     //! Requests related to module reloading
-    class ModuleManagerRequests
+    class AZCORE_API ModuleManagerRequests
         : public AZ::EBusTraits
     {
     public:

@@ -27,7 +27,7 @@ namespace AZ::NativeUI
         ENABLED,
     };
 
-    class NativeUIRequests
+    class AZCORE_API NativeUIRequests
     {
     public:
         AZ_RTTI(NativeUIRequests, "{48361EE6-C1E7-4965-A13A-7425B2691817}");

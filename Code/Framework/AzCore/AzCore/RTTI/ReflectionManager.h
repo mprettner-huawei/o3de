@@ -19,7 +19,7 @@ namespace AZ
     /**
      * Class that manages all ReflectContexts and all reflection entry point functions
      */
-    class ReflectionManager
+    class AZCORE_API ReflectionManager
     {
     private:
         // Reusable check for whether or not a type is a reflect context

@@ -22,7 +22,7 @@ namespace AZ
      * Messages to get/set user data. We use smart pointers to make sure
      * we don't delete any data before it's saved and safe for delete.
      */
-    class UserSettingsMessages
+    class AZCORE_API UserSettingsMessages
         : public EBusTraits
     {
     public:
@@ -59,7 +59,7 @@ namespace AZ
     };
     typedef EBus<UserSettingsMessages> UserSettingsBus;
 
-    class UserSettingsOwnerRequests
+    class AZCORE_API UserSettingsOwnerRequests
         : public EBusTraits
     {
     public:
@@ -75,7 +75,7 @@ namespace AZ
 
     typedef EBus<UserSettingsOwnerRequests> UserSettingsOwnerRequestBus;
 
-    class UserSettingsNotifications
+    class AZCORE_API UserSettingsNotifications
         : public EBusTraits
     {
     public:
@@ -94,7 +94,7 @@ namespace AZ
     /**
      *
      */
-    struct UserSettingsContainer
+    struct AZCORE_API UserSettingsContainer
     {
         AZ_CLASS_ALLOCATOR(UserSettingsContainer, SystemAllocator);
         AZ_TYPE_INFO(UserSettingsContainer, "{42C087CF-4F19-4DAF-B2B1-2927D94AA295}")
@@ -106,7 +106,7 @@ namespace AZ
     /**
      *
      */
-    class UserSettingsProvider
+    class AZCORE_API UserSettingsProvider
         : public UserSettingsBus::Handler
     {
     public:

@@ -19,7 +19,7 @@ namespace AZ
     /**
      * DataOverlayProviderBus is used to communicate with overlay providers
      */
-    class DataOverlayProviderMsgs
+    class AZCORE_API DataOverlayProviderMsgs
         : public EBusTraits
     {
     public:
@@ -36,7 +36,7 @@ namespace AZ
     };
     typedef EBus<DataOverlayProviderMsgs> DataOverlayProviderBus;
 
-    class DataOverlayTarget
+    class AZCORE_API DataOverlayTarget
     {
     public:
         DataOverlayTarget(SerializeContext::DataElementNode* dataContainer, SerializeContext* sc, SerializeContext::ErrorHandler* errorLogger)

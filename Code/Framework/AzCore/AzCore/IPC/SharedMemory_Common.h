@@ -9,7 +9,7 @@
 
 namespace AZ
 {
-    class SharedMemory_Common
+    class AZCORE_API SharedMemory_Common
     {
     public:
         enum AccessMode

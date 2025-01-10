@@ -29,7 +29,7 @@ namespace AZ
     //! files, etc. to work in a universal way.
     //! Paths in the functions for the Settings Registry follow the the JSON Pointer pattern (see
     //! https://tools.ietf.org/html/rfc6901) such as "/My/Object/Settings" or "/My/Array/0".
-    class SettingsRegistryInterface
+    class AZCORE_API SettingsRegistryInterface
     {
     public:
         AZ_RTTI(AZ::SettingsRegistryInterface, "{D62619D8-0C0B-4D9F-9FE8-F8EBC330DC55}");
@@ -48,7 +48,7 @@ namespace AZ
         //! AZStd::string overload must be used or the Visit method must be used
         using FixedValueString = AZ::StringFunc::Path::FixedString;
 
-        class Specializations
+        class AZCORE_API Specializations
         {
         public:
             static constexpr size_t MaxTagNameSize = 64;
@@ -116,7 +116,7 @@ namespace AZ
         };
 
         //! Encapsulate stored value and its signedness
-        struct SettingsType
+        struct AZCORE_API SettingsType
         {
             operator Type() const
             {
@@ -150,7 +150,7 @@ namespace AZ
             JsonMergePatch  //!< Using the json merge patch format to merge JSON data into the Settings Registry.
         };
 
-        struct NotifyEventArgs
+        struct AZCORE_API NotifyEventArgs
         {
             AZStd::string_view m_jsonKeyPath;
             SettingsType m_type;
@@ -160,7 +160,7 @@ namespace AZ
         using NotifyEvent = AZ::Event<const NotifyEventArgs&>;
         using NotifyEventHandler = typename NotifyEvent::Handler;
 
-        struct MergeEventArgs
+        struct AZCORE_API MergeEventArgs
         {
             AZStd::string_view m_mergeFilePath;
             AZStd::string_view m_jsonKeyPath;
@@ -174,7 +174,7 @@ namespace AZ
 
         //! Stores the data about the settings field being visited
         //! The full key path to the settings field is supplied, along with the settings type
-        struct VisitArgs
+        struct AZCORE_API VisitArgs
         {
             VisitArgs(const AZ::SettingsRegistryInterface& registry)
                 : m_registry(registry)
@@ -196,7 +196,7 @@ namespace AZ
             AZStd::function<VisitResponse(const VisitArgs&, VisitAction action)>;
         //! Base class for the visitor class during traversal over the Settings Registry. The type-agnostic function is always
         //! called and, if applicable, the overloaded functions with the appropriate values.
-        class Visitor
+        class AZCORE_API Visitor
         {
         public:
             virtual ~Visitor() = 0;
@@ -349,7 +349,7 @@ namespace AZ
 
         //! Structure which contains configuration settings for how to parse a single command line argument
         //! It supports supplying a functor for splitting a line into JSON path and JSON value
-        struct CommandLineArgumentSettings
+        struct AZCORE_API CommandLineArgumentSettings
         {
             struct JsonPathValue
             {
@@ -392,7 +392,7 @@ namespace AZ
 
         //! Encapsulates the result of a JSON Patch or JSON Merge Patch opreations
         //! into the Settings Registry
-        struct MergeSettingsResult
+        struct AZCORE_API MergeSettingsResult
         {
             //! Any values that is >= MergeSettingsReturnCode::Unset
             //! is treated as a successful operation

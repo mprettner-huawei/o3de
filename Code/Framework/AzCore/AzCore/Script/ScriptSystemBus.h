@@ -48,7 +48,7 @@ namespace AZ
      * be only one application at a time. This is why this but is set to support
      * only one client/listener.
      */
-    class ScriptSystemRequests
+    class AZCORE_API ScriptSystemRequests
         : public AZ::EBusTraits
     {
     public:

@@ -42,7 +42,7 @@ namespace AZ
     /**
      * Base class for all components.
      */
-    class Component
+    class AZCORE_API Component
     {
         friend class Entity;
     public:
@@ -524,7 +524,7 @@ namespace AZ
      * If you implement a component descriptor, inherit from ComponentDescriptorHelper
      * to implement additional functionality.
      */
-    class ComponentDescriptor
+    class AZCORE_API ComponentDescriptor
     {
     public:
         AZ_CLASS_ALLOCATOR(ComponentDescriptor, ComponentAllocator);
@@ -634,7 +634,7 @@ namespace AZ
      * type, you can safely pass only one result variable because aggregating or overwriting results
      * is impossible.
      */
-    struct ComponentDescriptorBusTraits
+    struct AZCORE_API ComponentDescriptorBusTraits
         : public EBusTraits
     {
         // We have one bus for each entity bus ID.

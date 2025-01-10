@@ -290,19 +290,19 @@ namespace AZ
 
     //! Simd optimized math functions.
     //! @{
-    float Abs(float value);
-    float Mod(float value, float divisor);
-    float Wrap(float value, float maxValue);
-    float Wrap(float value, float minValue, float maxValue);
-    float AngleMod(float value);
-    void SinCos(float angle, float& sin, float& cos);
-    float Sin(float angle);
-    float Cos(float angle);
-    float Acos(float value);
-    float Atan(float value);
-    float Atan2(float y, float x);
-    float Sqrt(float value);
-    float InvSqrt(float value);
+    AZCORE_API float Abs(float value);
+    AZCORE_API float Mod(float value, float divisor);
+    AZCORE_API float Wrap(float value, float maxValue);
+    AZCORE_API float Wrap(float value, float minValue, float maxValue);
+    AZCORE_API float AngleMod(float value);
+    AZCORE_API void SinCos(float angle, float& sin, float& cos);
+    AZCORE_API float Sin(float angle);
+    AZCORE_API float Cos(float angle);
+    AZCORE_API float Acos(float value);
+    AZCORE_API float Atan(float value);
+    AZCORE_API float Atan2(float y, float x);
+    AZCORE_API float Sqrt(float value);
+    AZCORE_API float InvSqrt(float value);
     //! @}
 
     AZ_MATH_INLINE bool IsClose(float a, float b, float tolerance = Constants::Tolerance)
@@ -692,5 +692,5 @@ namespace AZ
 
     //! Creates a unit quaternion uniformly sampled from the space of all possible rotations.
     //! See Graphics Gems III, chapter 6.
-    Quaternion CreateRandomQuaternion(SimpleLcgRandom& rng);
+    AZCORE_API Quaternion CreateRandomQuaternion(SimpleLcgRandom& rng);
 }

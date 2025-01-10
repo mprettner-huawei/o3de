@@ -26,7 +26,7 @@ namespace AZ
      * This context will be generated automatically once you enable the Debugging in the \ref ScriptContext.
      * Use this class to obtain registered classes, better callstacks, breakpoints, etc.
      */
-    class ScriptContextDebug
+    class AZCORE_API ScriptContextDebug
     {
         ScriptContextDebug(const ScriptContextDebug&);
         ScriptContextDebug operator=(const ScriptContextDebug&);
@@ -120,7 +120,7 @@ namespace AZ
         // @}
 
         // @{ Detailed callstack information - available only when debugging is enabled
-        struct CallstackLine
+        struct AZCORE_API CallstackLine
         {
             CallstackLine()
                 : m_sourceName(0)
@@ -144,7 +144,7 @@ namespace AZ
         const CallstackInfo& GetCallstack() const   { return m_callstack; }
         // @}
 
-        struct DebugValue
+        struct AZCORE_API DebugValue
         {
             AZ_TYPE_INFO(DebugValue, "{c32d1e88-2b8b-432c-91bc-d0b4b135279d}");
             enum Flags

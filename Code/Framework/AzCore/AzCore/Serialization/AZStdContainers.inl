@@ -502,7 +502,7 @@ namespace AZ
             }
         };
 
-        class AZStdArrayEvents : public SerializeContext::IEventHandler
+        class AZCORE_API AZStdArrayEvents : public SerializeContext::IEventHandler
         {
         public:
             using Stack = AZStd::stack<size_t, AZStd::vector<size_t, AZ::OSStdAllocator>>;
@@ -2084,7 +2084,7 @@ namespace AZ
             }
         };
 
-        class AZBinaryData
+        class AZCORE_API AZBinaryData
             : public SerializeContext::IDataSerializer
         {
         public:

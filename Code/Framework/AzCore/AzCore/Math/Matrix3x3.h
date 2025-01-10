@@ -22,7 +22,7 @@ namespace AZ
 
     //! Matrix with 3 rows and 3 columns.
     //! See Matrix4x4 for general information about matrices.
-    class Matrix3x3
+    class AZCORE_API Matrix3x3
     {
     public:
 
@@ -267,14 +267,14 @@ namespace AZ
 
     //! Pre-multiplies the matrix by a vector.
     //! Note that this is not the usual multiplication order for transformations.
-    Vector3 operator*(const Vector3& lhs, const Matrix3x3& rhs);
+    AZCORE_API Vector3 operator*(const Vector3& lhs, const Matrix3x3& rhs);
 
     //! Pre-multiplies the matrix by a vector in-place.
     //! Note that this is not the usual multiplication order for transformations.
-    Vector3& operator*=(Vector3& lhs, const Matrix3x3& rhs);
+    AZCORE_API Vector3& operator*=(Vector3& lhs, const Matrix3x3& rhs);
 
     //! Pre-multiplies the matrix by a scalar.
-    Matrix3x3 operator*(float lhs, const Matrix3x3& rhs);
+    AZCORE_API Matrix3x3 operator*(float lhs, const Matrix3x3& rhs);
 
 } // namespace AZ
 

@@ -26,7 +26,7 @@ namespace AZ
 
     //! @class IConsole
     //! A simple console class for providing text based variable and process interaction.
-    class IConsole
+    class AZCORE_API IConsole
     {
     public:
         AZ_RTTI(IConsole, "{20001930-119D-4A80-BD67-825B7E4AEB3D}");

@@ -15,7 +15,7 @@ namespace AZ
     /**
      * Reflect different aspects of math (depending on context)
      */
-    void MathReflect(ReflectContext* context);
+    void AZCORE_API MathReflect(ReflectContext* context);
 }
 
 #endif //AZCORE_MATH_REFLECTION_H

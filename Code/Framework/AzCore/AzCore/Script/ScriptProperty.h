@@ -35,7 +35,7 @@ namespace AzToolsFramework
 namespace AZ
 {
     class ReflectContext;
-    class ScriptProperties
+    class AZCORE_API ScriptProperties
     {
     public:
         static void Reflect(AZ::ReflectContext* reflection);
@@ -44,7 +44,7 @@ namespace AZ
     /**
     * Base class for all script properties.
     */
-    class ScriptProperty
+    class AZCORE_API ScriptProperty
     {
     public:
         static void UpdateScriptProperty(AZ::ScriptDataContext& sdc, int valueIndex, ScriptProperty** targetProperty);
@@ -95,7 +95,7 @@ namespace AZ
     // that can modify the underlying data type, and would need to be handled
     // specially in the case of an 'in place' operation when being stored for
     // network functionality.
-    class FunctionalScriptProperty
+    class AZCORE_API FunctionalScriptProperty
         : public ScriptProperty
     {
     public:
@@ -123,7 +123,7 @@ namespace AZ
         AZStd::set< AZ::ScriptPropertyWatcher* >  m_watchers;
     };
 
-    class ScriptPropertyNil
+    class AZCORE_API ScriptPropertyNil
         : public ScriptProperty
     {
     public:
@@ -149,7 +149,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyBoolean
+    class AZCORE_API ScriptPropertyBoolean
         : public ScriptProperty
     {
     public:
@@ -182,7 +182,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyNumber
+    class AZCORE_API ScriptPropertyNumber
         : public ScriptProperty
     {
     public:
@@ -215,7 +215,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyString
+    class AZCORE_API ScriptPropertyString
         : public ScriptProperty
     {
     public:
@@ -247,7 +247,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyGenericClass
+    class AZCORE_API ScriptPropertyGenericClass
         : public FunctionalScriptProperty
         , public BehaviorObjectSignals::Handler
     {
@@ -322,7 +322,7 @@ namespace AZ
         AZ::DynamicSerializableField    m_value;
     };
 
-    class ScriptPropertyNumberArray
+    class AZCORE_API ScriptPropertyNumberArray
         : public ScriptProperty
     {
     public:
@@ -355,7 +355,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyBooleanArray
+    class AZCORE_API ScriptPropertyBooleanArray
         : public ScriptProperty
     {
     public:
@@ -387,7 +387,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyStringArray
+    class AZCORE_API ScriptPropertyStringArray
         : public ScriptProperty
     {
     public:
@@ -419,7 +419,7 @@ namespace AZ
         void CloneDataFrom(const AZ::ScriptProperty* scriptProperty) override;
     };
 
-    class ScriptPropertyGenericClassArray
+    class AZCORE_API ScriptPropertyGenericClassArray
         : public ScriptProperty
     {
     public:
@@ -466,7 +466,7 @@ namespace AZ
         AZ::Uuid m_elementTypeId = AZ::Uuid::CreateNull(); // Stores type wrapped by DynamicSerializableField values
     };
 
-    class ScriptPropertyAsset
+    class AZCORE_API ScriptPropertyAsset
         : public ScriptProperty
     {
     public:

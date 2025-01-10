@@ -51,7 +51,7 @@ namespace AZ
      * Base classes for structures that store references to OnDemandReflection instantiations.
      * ReflectContext will own weak pointers to the function, so that we may look up already registered types.
      */
-    class OnDemandReflectionOwner
+    class AZCORE_API OnDemandReflectionOwner
     {
     public:
         virtual ~OnDemandReflectionOwner();
@@ -102,7 +102,7 @@ namespace AZ
      * To do so make sure that when \ref ReflectContext::m_isRemoveReflection is set to true any calls to Class<...>() actualy remove
      * reflection. We recommend this approach so the user can write only one reflection function (not Reflect and "Unreflect")
      */
-    class ReflectContext
+    class AZCORE_API ReflectContext
     {
     public:
         AZ_TYPE_INFO_WITH_NAME_DECL(ReflectContext);
@@ -199,7 +199,7 @@ namespace AZ::Internal
 
     // Custom struct to use as a unique_ptr deleter which can selectively deletes an attribute if
     // the caller should the pointer
-    struct AttributeDeleter
+    struct AZCORE_API AttributeDeleter
     {
         AttributeDeleter();
         AttributeDeleter(bool deletePtr);
@@ -220,7 +220,7 @@ namespace AZ
     * Base abstract class for all attributes. Use azrtti to get the
     * appropriate version. Of course if NULL there is a data mismatch of attributes.
     */
-    class Attribute
+    class AZCORE_API Attribute
     {
     public:
         using ContextDeleter = void(*)(void* contextData);

@@ -14,7 +14,7 @@ namespace AZ
     class BehaviorMethod;
     class BehaviorProperty;
 
-    class BehaviorObjectSignalsInterface
+    class AZCORE_API BehaviorObjectSignalsInterface
         : public EBusTraits
     {
     public:

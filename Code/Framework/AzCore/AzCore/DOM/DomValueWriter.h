@@ -15,7 +15,7 @@ namespace AZ::Dom
 {
     //! Visitor that writes to a Value.
     //! Supports all Visitor operations.
-    class ValueWriter : public Visitor
+    class AZCORE_API ValueWriter : public Visitor
     {
     public:
         ValueWriter(Value& outputValue);

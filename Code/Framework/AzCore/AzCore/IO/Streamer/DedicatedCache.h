@@ -15,6 +15,7 @@
 #include <AzCore/IO/Streamer/StreamerConfiguration.h>
 #include <AzCore/Memory/SystemAllocator.h>
 #include <AzCore/std/containers/vector.h>
+#include <AzCore/std/noncopyable.h>
 #include <AzCore/std/limits.h>
 #include <AzCore/std/smart_ptr/unique_ptr.h>
 
@@ -50,6 +51,7 @@ namespace AZ::IO
 
     class AZCORE_API DedicatedCache
         : public StreamStackEntry
+        , public AZStd::noncopyable
     {
     public:
         DedicatedCache(u64 cacheSize, u32 blockSize, u32 alignment, bool onlyEpilogWrites);

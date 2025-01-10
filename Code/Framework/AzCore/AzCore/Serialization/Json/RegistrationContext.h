@@ -13,12 +13,14 @@
 #include <AzCore/RTTI/ReflectContext.h>
 #include <AzCore/Serialization/Json/BaseJsonSerializer.h>
 #include <AzCore/std/containers/unordered_map.h>
+#include <AzCore/std/noncopyable.h>
 #include <AzCore/std/smart_ptr/unique_ptr.h>
 
 namespace AZ
 {
     class AZCORE_API JsonRegistrationContext
         : public ReflectContext
+        , public AZStd::noncopyable
     {
     public:
         AZ_RTTI(JsonRegistrationContext, "{5A763774-CA8B-4245-A897-A03C503DCD60}", ReflectContext);

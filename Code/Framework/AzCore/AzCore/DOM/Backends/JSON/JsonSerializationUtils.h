@@ -15,6 +15,7 @@
 #include <AzCore/JSON/document.h>
 #include <AzCore/std/containers/deque.h>
 #include <AzCore/std/containers/vector.h>
+#include <AzCore/std/noncopyable.h>
 #include <AzCore/std/smart_ptr/unique_ptr.h>
 
 namespace AZ::Dom::Json
@@ -42,7 +43,9 @@ namespace AZ::Dom::Json
     AZ_DEFINE_ENUM_BITWISE_OPERATORS(ParseFlags);
 
     //! Visitor that feeds into a rapidjson::Value
-    class AZCORE_API RapidJsonValueWriter final : public Visitor
+    class AZCORE_API RapidJsonValueWriter final
+        : public Visitor
+        , public AZStd::noncopyable
     {
     public:
         RapidJsonValueWriter(rapidjson::Value& outputValue, rapidjson::Value::AllocatorType& allocator);

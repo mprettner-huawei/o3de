@@ -16,6 +16,7 @@
 #include <AzCore/std/containers/deque.h>
 #include <AzCore/std/containers/vector.h>
 #include <AzCore/std/chrono/chrono.h>
+#include <AzCore/std/noncopyable.h>
 
 namespace AZ::IO::Requests
 {
@@ -46,6 +47,7 @@ namespace AZ::IO
     //! by the last entry in the stack as it will not forward calls to the next entry.
     class AZCORE_API StorageDrive
         : public StreamStackEntry
+        , public AZStd::noncopyable
     {
     public:
         explicit StorageDrive(u32 maxFileHandles);

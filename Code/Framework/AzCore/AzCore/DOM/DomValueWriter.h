@@ -10,12 +10,15 @@
 
 #include <AzCore/DOM/DomValue.h>
 #include <AzCore/std/containers/stack.h>
+#include <AzCore/std/noncopyable.h>
 
 namespace AZ::Dom
 {
     //! Visitor that writes to a Value.
     //! Supports all Visitor operations.
-    class AZCORE_API ValueWriter : public Visitor
+    class AZCORE_API ValueWriter
+        : public Visitor
+        , public AZStd::noncopyable
     {
     public:
         ValueWriter(Value& outputValue);

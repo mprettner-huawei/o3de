@@ -11,6 +11,7 @@
 
 #include <AzCore/std/containers/vector.h>
 #include <AzCore/std/functional.h>
+#include <AzCore/std/noncopyable.h>
 #include <AzCore/std/smart_ptr/unique_ptr.h>
 #include <AzCore/std/typetraits/is_same.h>
 
@@ -19,7 +20,7 @@ namespace AZ
     /**
      * Class that manages all ReflectContexts and all reflection entry point functions
      */
-    class AZCORE_API ReflectionManager
+    class AZCORE_API ReflectionManager : public AZStd::noncopyable
     {
     private:
         // Reusable check for whether or not a type is a reflect context

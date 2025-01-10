@@ -41,6 +41,7 @@ set(FILES
     iterator/iterator_primitives.h
     iterator.h
     limits.h
+    noncopyable.h
     numeric.h
     math.h
     metaprogramming/ratio.h

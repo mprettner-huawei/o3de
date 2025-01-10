@@ -57,21 +57,6 @@ set(O3DE_STARTUP_CFG_FILE_CHECK_OVERRIDE "" CACHE STRING
 # whether or not to allow the Settings Registry development overrides.
 set(STARTUP_CFG_FILE_CHECK_OVERRIDE_FLAG $<$<NOT:$<STREQUAL:"${O3DE_STARTUP_CFG_FILE_CHECK_OVERRIDE}","">>:O3DE_STARTUP_CFG_FILE_CHECK_OVERRIDE=$<BOOL:${O3DE_STARTUP_CFG_FILE_CHECK_OVERRIDE}>>)
 
-
-ly_add_target(
-    NAME O3DEKernel ${PAL_TRAIT_MONOLITHIC_DRIVEN_LIBRARY_TYPE}
-    NAMESPACE AZ
-    FILES_CMAKE
-        AzCore/o3dekernel_files.cmake
-    PLATFORM_INCLUDE_FILES
-        ${pal_dir}/o3dekernel_${PAL_PLATFORM_NAME_LOWERCASE}.cmake
-    INCLUDE_DIRECTORIES
-        PUBLIC
-            .
-            ${pal_dir}
-            ${common_dir}
-)
-
 ly_add_target(
     NAME AzCore ${PAL_TRAIT_MONOLITHIC_DRIVEN_LIBRARY_TYPE}
     NAMESPACE AZ
@@ -82,6 +67,7 @@ ly_add_target(
     COMPILE_DEFINITIONS
         PRIVATE
             AZCORE_EXPORTS
+            AZSTD_EXPORTS
     PLATFORM_INCLUDE_FILES
         ${pal_dir}/platform_${PAL_PLATFORM_NAME_LOWERCASE}.cmake
     INCLUDE_DIRECTORIES
@@ -99,7 +85,6 @@ ly_add_target(
             3rdParty::ZLIB
             3rdParty::zstd
             3rdParty::cityhash
-            AZ::O3DEKernel
 )
 
 ly_add_source_properties(

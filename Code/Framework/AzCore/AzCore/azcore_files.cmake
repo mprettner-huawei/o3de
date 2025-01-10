@@ -90,6 +90,7 @@ set(FILES
     Debug/ProfilerReflection.cpp
     Debug/ProfilerReflection.h
     Debug/StackTracer.h
+    Debug/ITrace.cpp
     Debug/Timer.h
     Debug/Trace.cpp
     Debug/Trace.h
@@ -450,6 +451,8 @@ set(FILES
     Module/DynamicModuleHandle.cpp
     Module/DynamicModuleHandle.h
     Module/EBusInstantiations.cpp
+    Module/Environment.cpp
+    Module/Environment.h
     Module/Module.cpp
     Module/Module.h
     Module/ModuleManagerBus.h

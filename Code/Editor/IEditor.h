@@ -558,6 +558,3 @@ struct IInitializeUIInfo
 {
     virtual void SetInfoText(const char* text) = 0;
 };
-
-AZ_DECLARE_BUDGET(Editor);
-

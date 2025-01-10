@@ -76,17 +76,19 @@ namespace AZ::Debug
 #endif
 
 // If using a budget defined in a different C++ source file, add AZ_DECLARE_BUDGET(yourBudget); somewhere in your source file at namespace
-// scope Alternatively, AZ_DECLARE_BUDGET can be used in a header to declare the budget for use across any users of the header
-#define AZ_DECLARE_BUDGET(name) ::AZ::Debug::Budget* AZ_BUDGET_GETTER(name)()
+// scope Alternatively, AZ_DECLARE_BUDGET can be used in a header to declare the budget for use across any users of the header. Use the
+// two-parameter-version (eg. AZ_DECLARE_BUDGET(yourBudget, AZCORE_API)) if the corresponding AZ_DEFINE_BUDGET call is in a shared library.
+#define AZ_DECLARE_BUDGET_EXPORT(_Name, _ExportMacro) _ExportMacro ::AZ::Debug::Budget* AZ_BUDGET_GETTER(_Name)()
+#define AZ_DECLARE_BUDGET(_Name) AZ_DECLARE_BUDGET_EXPORT(_Name, )
 
 // Declare budgets that are core engine budgets, or may be shared/needed across multiple external gems
 // You should NOT need to declare user-space or budgets with isolated usage here. Prefer declaring them local to the module(s) that use
 // the budget and defining them within a single module to avoid needing to recompile the entire engine.
-AZ_DECLARE_BUDGET(Animation);
-AZ_DECLARE_BUDGET(Audio);
-AZ_DECLARE_BUDGET(AzCore);
-AZ_DECLARE_BUDGET(Editor);
-AZ_DECLARE_BUDGET(Entity);
-AZ_DECLARE_BUDGET(Game);
-AZ_DECLARE_BUDGET(System);
-AZ_DECLARE_BUDGET(Physics);
+AZ_DECLARE_BUDGET_EXPORT(Animation, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(Audio, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(AzCore, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(Editor, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(Entity, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(Game, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(System, AZCORE_API);
+AZ_DECLARE_BUDGET_EXPORT(Physics, AZCORE_API);

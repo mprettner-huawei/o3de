@@ -23,8 +23,6 @@
     #include <AzFramework/Entity/EntityDebugDisplayBus.h>
 #endif // !AUDIO_RELEASE
 
-AZ_DECLARE_BUDGET(Audio);
-
 namespace Audio
 {
     // Forward declarations.

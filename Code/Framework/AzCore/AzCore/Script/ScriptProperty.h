@@ -52,7 +52,7 @@ namespace AZ
         static void Reflect(AZ::ReflectContext* reflection);
 
         virtual ~ScriptProperty() {}
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptProperty);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptProperty, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         ScriptProperty() {}
@@ -99,7 +99,7 @@ namespace AZ
         : public ScriptProperty
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(FunctionalScriptProperty);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(FunctionalScriptProperty, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         FunctionalScriptProperty();
@@ -128,7 +128,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyNil, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyNil);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyNil, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -154,7 +154,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyBoolean, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyBoolean);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyBoolean, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -187,7 +187,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyNumber, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyNumber);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyNumber, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -220,7 +220,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyString, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyString);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyString, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -255,7 +255,7 @@ namespace AZ
         friend class AzToolsFramework::Components::ScriptEditorComponent;
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyGenericClass, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyGenericClass);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyGenericClass, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -328,7 +328,7 @@ namespace AZ
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyNumberArray, AZ::SystemAllocator);
 
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyNumberArray);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyNumberArray, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -360,7 +360,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyBooleanArray, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyBooleanArray);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyBooleanArray, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -392,7 +392,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyStringArray, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyStringArray);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyStringArray, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -426,7 +426,7 @@ namespace AZ
         typedef AZStd::vector<AZ::DynamicSerializableField> ValueArrayType;
 
         AZ_CLASS_ALLOCATOR(ScriptPropertyGenericClassArray, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyGenericClassArray);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyGenericClassArray, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -471,7 +471,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(ScriptPropertyAsset, AZ::SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(ScriptPropertyAsset);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ScriptPropertyAsset, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         static void Reflect(AZ::ReflectContext* reflection);

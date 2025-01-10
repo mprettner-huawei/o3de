@@ -55,7 +55,7 @@ namespace AZ
 
     struct AZCORE_API BehaviorObject // same as DynamicSerializableField, make sure we merge them... so we can store the object easily
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorObject);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorObject, AZCORE_API);
 
         BehaviorObject();
         BehaviorObject(void* address, const Uuid& typeId);
@@ -76,7 +76,7 @@ namespace AZ
      */
     struct AZCORE_API BehaviorParameter
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorParameter);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorParameter, AZCORE_API);
         /// Temporary POD buffer when we convert parameters on the stack.
         typedef AZStd::static_buffer_allocator<32, 32> TempValueParameterAllocator;
 
@@ -148,7 +148,7 @@ namespace AZ
 
     struct AZCORE_API BehaviorArgument : public BehaviorParameter
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorArgument);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorArgument, AZCORE_API);
 
         BehaviorArgument();
         BehaviorArgument(const BehaviorArgument&) = default;
@@ -277,7 +277,7 @@ namespace AZ
      */
     struct AZCORE_API BehaviorAzEventDescription
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorAzEventDescription);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorAzEventDescription, AZCORE_API);
         AZStd::string m_eventName;
         AZStd::vector<AZStd::string> m_parameterNames;
     };
@@ -360,7 +360,7 @@ namespace AZ
 
     struct AZCORE_API InputRestriction
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(InputRestriction);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(InputRestriction, AZCORE_API);
         AZ_CLASS_ALLOCATOR(InputRestriction, AZ::SystemAllocator);
 
         bool m_listExcludes = true;
@@ -375,7 +375,7 @@ namespace AZ
 
     struct AZCORE_API BranchOnResultInfo
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(BranchOnResultInfo);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BranchOnResultInfo, AZCORE_API);
         AZ_CLASS_ALLOCATOR(BranchOnResultInfo, AZ::SystemAllocator);
 
         AZStd::string m_trueName = "True";
@@ -390,7 +390,7 @@ namespace AZ
 
     struct AZCORE_API CheckedOperationInfo
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(CheckedOperationInfo);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(CheckedOperationInfo, AZCORE_API);
         AZ_CLASS_ALLOCATOR(CheckedOperationInfo, AZ::SystemAllocator);
 
         AZStd::string m_safetyCheckName;
@@ -415,7 +415,7 @@ namespace AZ
 
     struct AZCORE_API OverloadArgumentGroupInfo
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(OverloadArgumentGroupInfo);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(OverloadArgumentGroupInfo, AZCORE_API);
         AZ_CLASS_ALLOCATOR(OverloadArgumentGroupInfo, AZ::SystemAllocator);
 
         AZStd::vector<AZStd::string> m_parameterGroupNames;
@@ -428,7 +428,7 @@ namespace AZ
 
     struct AZCORE_API ExplicitOverloadInfo
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(ExplicitOverloadInfo);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ExplicitOverloadInfo, AZCORE_API);
         AZ_CLASS_ALLOCATOR(ExplicitOverloadInfo, AZ::SystemAllocator);
 
         AZStd::string m_name;
@@ -460,7 +460,7 @@ namespace AZ
 
     struct AZCORE_API EventHandlerCreationFunctionHolder
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(EventHandlerCreationFunctionHolder);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(EventHandlerCreationFunctionHolder, AZCORE_API);
         AZ_CLASS_ALLOCATOR(EventHandlerCreationFunctionHolder, AZ::SystemAllocator);
 
         EventHandlerCreationFunction m_function;
@@ -487,7 +487,7 @@ namespace AZ::Internal
     //! BehaviorMethod reflection will only support functions up to 32 parameters
     constexpr size_t MaxBehaviorParameters = 32;
 
-    class BehaviorMethodImpl : public BehaviorMethod
+    class AZCORE_API BehaviorMethodImpl : public BehaviorMethod
     {
     public:
         using ClassType = void;
@@ -1135,7 +1135,7 @@ namespace AZ
     class AZCORE_API BehaviorEBusHandler
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorEBusHandler);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorEBusHandler, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         // Since we can share hooks we should probably pass the event name
@@ -1439,7 +1439,7 @@ namespace AZ
 
     public:
         AZ_CLASS_ALLOCATOR(BehaviorContext, SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(BehaviorContext);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(BehaviorContext, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         bool IsTypeReflected(AZ::Uuid typeId) const override;

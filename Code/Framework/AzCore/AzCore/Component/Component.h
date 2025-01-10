@@ -50,7 +50,7 @@ namespace AZ
         /**
          * Forward declare run-time type information to the component.
          */
-        AZ_TYPE_INFO_WITH_NAME_DECL(Component);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(Component, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
         AZ_CLASS_ALLOCATOR_DECL
 

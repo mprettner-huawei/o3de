@@ -16,7 +16,7 @@ namespace AZ
     //! This is not meant for serialization to filesystem
     struct AZCORE_API PointerObject
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(PointerObject);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(PointerObject, AZCORE_API);
         void* m_address{};
         AZ::TypeId m_typeId;
 

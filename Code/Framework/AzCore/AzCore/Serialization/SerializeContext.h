@@ -144,7 +144,7 @@ namespace AZ
         using IDataConverter = Serialize::IDataConverter;
 
         AZ_CLASS_ALLOCATOR(SerializeContext, SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(SerializeContext);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(SerializeContext, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         /// Callback to process data conversion.
@@ -701,7 +701,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(DataPatchUpgrade, SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(DataPatchUpgrade);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(DataPatchUpgrade, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         DataPatchUpgrade(AZStd::string_view fieldName, unsigned int fromVersion, unsigned int toVersion);
@@ -789,7 +789,7 @@ namespace AZ
     {
     public:
         AZ_CLASS_ALLOCATOR(DataPatchNameUpgrade, SystemAllocator);
-        AZ_TYPE_INFO_WITH_NAME_DECL(DataPatchNameUpgrade);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(DataPatchNameUpgrade, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         DataPatchNameUpgrade(unsigned int fromVersion, unsigned int toVersion, AZStd::string_view oldName, AZStd::string_view newName)
@@ -877,7 +877,7 @@ namespace AZ::Serialize
      */
     struct AZCORE_API ClassElement
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(ClassElement);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ClassElement, AZCORE_API);
         enum Flags
         {
             FLG_POINTER = (1 << 0),       ///< Element is stored as pointer (it's not a value).
@@ -928,7 +928,7 @@ namespace AZ::Serialize
         friend SerializeContext;
         using ClassElementArray = AZStd::vector<ClassElement>;
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(ClassData);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ClassData, AZCORE_API);
 
         ClassData();
         ~ClassData() { ClearAttributes(); }
@@ -1060,7 +1060,7 @@ namespace AZ::Serialize
     class AZCORE_API IDataContainer
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(IDataContainer);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(IDataContainer, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL()
 
         using ElementCB = AZStd::function< bool(void* /* instance pointer */, const Uuid& /*elementClassId*/, const ClassData* /* elementGenericClassData */, const ClassElement* /* genericClassElement */) >;
@@ -1087,7 +1087,7 @@ namespace AZ::Serialize
                 UnorderedSet,
                 UnorderedMap
             };
-            AZ_TYPE_INFO_WITH_NAME_DECL(IAssociativeDataContainer);
+            AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(IAssociativeDataContainer, AZCORE_API);
             virtual ~IAssociativeDataContainer() {}
 
             struct KeyPtrDeleter
@@ -1418,7 +1418,7 @@ namespace AZ::Serialize
     */
     struct AZCORE_API EnumerateInstanceCallContext
     {
-        AZ_TYPE_INFO_WITH_NAME_DECL(EnumerateInstanceCallContext);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(EnumerateInstanceCallContext, AZCORE_API);
         EnumerateInstanceCallContext(const SerializeContext::BeginElemEnumCB& beginElemCB,
             const SerializeContext::EndElemEnumCB& endElemCB,
             const SerializeContext* context, unsigned int accessflags,

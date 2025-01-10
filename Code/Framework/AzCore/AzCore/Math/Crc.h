@@ -55,7 +55,7 @@ namespace AZ
     class AZCORE_API Crc32
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(Crc32)
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(Crc32, AZCORE_API)
 
         /**
          * Initializes to 0.

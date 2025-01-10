@@ -602,17 +602,21 @@ namespace AZ
 // This pairs with the AZ_TYPE_INFO_WITH_NAME_IMPL/AZ_TYPE_INFO_WITH_NAME_IMPL_INLINE where an implemenation can be provided
 // in a translation unit(.cpp) or a an inline(.inl) file in order to help reduce compile times
 // https://godbolt.org/z/EGPvKr7xM
-#define AZ_TYPE_INFO_WITH_NAME_DECL_HELPER(_ClassName, _TemplatePlaceholders) \
+#define AZ_TYPE_INFO_WITH_NAME_DECL_HELPER(_ClassName, _TemplatePlaceholders, _ExportMacro) \
     AZ_TYPE_INFO_SIMPLE_TEMPLATE_ID _TemplatePlaceholders \
-    friend AZ::TypeNameString GetO3deTypeName(AZ::Adl, AZStd::type_identity<_ClassName>); \
+    friend _ExportMacro AZ::TypeNameString GetO3deTypeName(AZ::Adl, AZStd::type_identity<_ClassName>); \
     AZ_TYPE_INFO_SIMPLE_TEMPLATE_ID _TemplatePlaceholders \
-    friend AZ::TypeId GetO3deTypeId(AZ::Adl,AZStd::type_identity<_ClassName>); \
+    friend _ExportMacro AZ::TypeId GetO3deTypeId(AZ::Adl,AZStd::type_identity<_ClassName>); \
     static const char* TYPEINFO_Name(); \
     static AZ::TypeId TYPEINFO_Uuid();
 
 #define AZ_TYPE_INFO_WITH_NAME_DECL(_ClassNameOrTemplateName) \
     AZ_TYPE_INFO_WITH_NAME_DECL_HELPER(AZ_USE_FIRST_ARG(AZ_UNWRAP(_ClassNameOrTemplateName)), \
-    AZ_WRAP(AZ_SKIP_FIRST_ARG(AZ_UNWRAP(_ClassNameOrTemplateName))) )
+    AZ_WRAP(AZ_SKIP_FIRST_ARG(AZ_UNWRAP(_ClassNameOrTemplateName))), )
+
+#define AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(_ClassNameOrTemplateName, _ExportMacro) \
+    AZ_TYPE_INFO_WITH_NAME_DECL_HELPER(AZ_USE_FIRST_ARG(AZ_UNWRAP(_ClassNameOrTemplateName)), \
+    AZ_WRAP(AZ_SKIP_FIRST_ARG(AZ_UNWRAP(_ClassNameOrTemplateName))), _ExportMacro)
 
 
 // Repeat of AZ_TYPE_INFO_MACRO_CALL with a different name to allow

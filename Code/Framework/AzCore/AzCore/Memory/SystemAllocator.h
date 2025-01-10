@@ -28,7 +28,7 @@ namespace AZ
         : public AllocatorBase
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(SystemAllocator);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(SystemAllocator, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         SystemAllocator();

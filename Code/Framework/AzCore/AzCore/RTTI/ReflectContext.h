@@ -105,7 +105,7 @@ namespace AZ
     class AZCORE_API ReflectContext
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(ReflectContext);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(ReflectContext, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         ReflectContext();
@@ -225,7 +225,7 @@ namespace AZ
     public:
         using ContextDeleter = void(*)(void* contextData);
 
-        AZ_TYPE_INFO_WITH_NAME_DECL(Attribute);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(Attribute, AZCORE_API);
         AZ_RTTI_NO_TYPE_INFO_DECL();
 
         Attribute()

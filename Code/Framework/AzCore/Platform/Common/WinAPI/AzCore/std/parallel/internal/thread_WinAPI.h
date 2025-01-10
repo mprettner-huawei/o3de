@@ -27,7 +27,7 @@ namespace AZStd
         /**
          * Create and run thread
          */
-        HANDLE create_thread(const thread_desc* desc, thread_info* ti, unsigned int* id);
+        AZSTD_API HANDLE create_thread(const thread_desc* desc, thread_info* ti, unsigned int* id);
     }
 
     //////////////////////////////////////////////////////////////////////////

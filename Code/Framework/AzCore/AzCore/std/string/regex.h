@@ -423,7 +423,7 @@ namespace AZStd
             return (string_type(first, last));
         }
     private:
-        static const ClassNames<Element> m_names[];
+        AZSTD_API static const ClassNames<Element> m_names[];
     };
 
     // CLASS regex_traits<char>

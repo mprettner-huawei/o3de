@@ -48,7 +48,7 @@ namespace AZStd
     }
     // Extension
 
-    struct thread_desc
+    struct AZSTD_API thread_desc
     {
         //! Debug thread name. Limited to 16 characters on Linux.
         const char*     m_name{ "AZStd::thread" };
@@ -78,7 +78,7 @@ namespace AZStd
 
 
     // 30.3.1
-    class thread
+    class AZSTD_API thread
     {
     public:
         // types:
@@ -151,10 +151,10 @@ namespace AZStd
     class thread;
     inline void swap(thread& x, thread& y)      { x.swap(y); }
     namespace this_thread {
-        thread::id get_id();
-        void yield();
+        AZSTD_API thread::id get_id();
+        AZSTD_API void yield();
         ///extension, spins for the specified number of loops, yielding correctly on hyper threaded processors
-        void pause(int numLoops);
+        AZSTD_API void pause(int numLoops);
         //template <class Clock, class Duration>
         //void sleep_until(const chrono::time_point<Clock, Duration>& abs_time);
         template <class Rep, class Period>

@@ -19,7 +19,7 @@ namespace AZStd
         /**
          * Create and run thread
          */
-        pthread_t create_thread(const thread_desc* desc, thread_info* ti);
+        AZSTD_API pthread_t create_thread(const thread_desc* desc, thread_info* ti);
     }
 
     //////////////////////////////////////////////////////////////////////////

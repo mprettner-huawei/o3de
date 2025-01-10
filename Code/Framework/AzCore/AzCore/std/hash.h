@@ -9,6 +9,7 @@
 #define AZSTD_HASH_H 1
 
 #include <limits>
+#include <AzCore/std/base.h>
 #include <AzCore/std/function/invoke.h>
 #include <AzCore/std/utils.h>
 #include <AzCore/std/typetraits/conjunction.h>
@@ -217,7 +218,7 @@ namespace AZStd
     //@} Hash functions
 
     // Bucket size suitable to hold n elements.
-    AZStd::size_t hash_next_bucket_size(AZStd::size_t n);
+    AZSTD_API AZStd::size_t hash_next_bucket_size(AZStd::size_t n);
 }
 
 #endif // AZSTD_HASH_H

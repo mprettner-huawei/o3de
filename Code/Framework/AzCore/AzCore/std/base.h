@@ -20,6 +20,16 @@
 #   define AZ_FORMAT_ATTRIBUTE(STRING_INDEX, FIRST_TO_CHECK) __attribute__((__format__ (__printf__, STRING_INDEX, FIRST_TO_CHECK)))
 #endif
 
+#if defined(AZ_MONOLITHIC_BUILD)
+    #define AZSTD_API
+#else
+    #if defined(AZSTD_EXPORTS)
+        #define AZSTD_API AZ_DLL_EXPORT
+    #else
+        #define AZSTD_API AZ_DLL_IMPORT
+    #endif
+#endif
+
 namespace AZStd
 {
     using ::size_t;

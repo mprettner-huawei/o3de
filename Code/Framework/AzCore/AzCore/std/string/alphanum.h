@@ -31,7 +31,7 @@ namespace AZStd
         * @return negative if l<r, 0 if l equals r, positive if l>r
         *
         */
-        int alphanum_impl(const char* l, const char* r);
+        AZSTD_API int alphanum_impl(const char* l, const char* r);
     }
 
     /**

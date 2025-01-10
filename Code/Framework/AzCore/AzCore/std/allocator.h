@@ -66,7 +66,7 @@ namespace AZStd
     /**
      * All allocation will be piped to AZ::SystemAllocator, make sure it is created!
      */
-    class allocator
+    class AZSTD_API allocator
     {
     public:
         using value_type = void;

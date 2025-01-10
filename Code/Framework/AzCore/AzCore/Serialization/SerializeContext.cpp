@@ -52,7 +52,14 @@ namespace AZ
     // The first argument to RTTI is template name followed by any template placeholders for substituting the template type specifiers
     AZ_RTTI_NO_TYPE_INFO_IMPL((SerializeContext::DataPatchTypeUpgrade, AZ_TYPE_INFO_CLASS, AZ_TYPE_INFO_CLASS), DataPatchUpgrade);
 
-    AZ_THREAD_LOCAL void* Internal::AZStdArrayEvents::m_indices = nullptr;
+    namespace Internal
+    {
+        // To avoid allocating memory for the stack when there's only one AZStd::array being tracked, g_AZStdArrayEventsIndices is used to
+        // both store an integer value for the index, or when there's nested AZStd::arrays, an AZStd::stack. To tell the two apart
+        // the least significant bit is set to 1 if an integer value is stored and 0 if g_AZStdArrayEventsIndices points to an AZStd::stack.
+        // Because the lsb is used for storing the indicator bit, the stored value needs to be shifted down to get the actual index.
+        AZ_THREAD_LOCAL void* g_AZStdArrayEventsIndices = nullptr;
+    }
 
     //////////////////////////////////////////////////////////////////////////
     // Integral types serializers
@@ -2166,21 +2173,21 @@ namespace AZ
     void Internal::AZStdArrayEvents::OnWriteBegin(void* classPtr)
     {
         (void)classPtr;
-        if (m_indices)
+        if (g_AZStdArrayEventsIndices)
         {
-            if ((reinterpret_cast<uintptr_t>(m_indices) & 1) == 1)
+            if ((reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) & 1) == 1)
             {
                 // Pointer is already in use to store an index so convert it to a stack
-                size_t previousIndex = reinterpret_cast<uintptr_t>(m_indices) >> 1;
+                size_t previousIndex = reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) >> 1;
                 Stack* stack = new Stack();
                 AZ_Assert((reinterpret_cast<uintptr_t>(stack) & 1) == 0, "Expected memory allocation to be at least 2 byte aligned.");
                 stack->push(previousIndex);
                 stack->push(0);
-                m_indices = stack;
+                g_AZStdArrayEventsIndices = stack;
             }
             else
             {
-                Stack* stack = reinterpret_cast<Stack*>(m_indices);
+                Stack* stack = reinterpret_cast<Stack*>(g_AZStdArrayEventsIndices);
                 stack->push(0);
             }
         }
@@ -2188,28 +2195,28 @@ namespace AZ
         {
             // Use the pointer to just store the one counter instead of allocating memory. Using 1 bit to identify this as a regular
             // index and not a pointer.
-            m_indices = reinterpret_cast<void*>(1);
+            g_AZStdArrayEventsIndices = reinterpret_cast<void*>(1);
         }
     }
 
     void Internal::AZStdArrayEvents::OnWriteEnd(void* classPtr)
     {
         (void)classPtr;
-        if (m_indices)
+        if (g_AZStdArrayEventsIndices)
         {
-            if ((reinterpret_cast<uintptr_t>(m_indices) & 1) == 1)
+            if ((reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) & 1) == 1)
             {
                 // There was only one entry so no stack. Clear out the final bit that indicated this was an index and not a pointer.
-                m_indices = nullptr;
+                g_AZStdArrayEventsIndices = nullptr;
             }
             else
             {
-                Stack* stack = reinterpret_cast<Stack*>(m_indices);
+                Stack* stack = reinterpret_cast<Stack*>(g_AZStdArrayEventsIndices);
                 stack->pop();
                 if (stack->empty())
                 {
                     delete stack;
-                    m_indices = nullptr;
+                    g_AZStdArrayEventsIndices = nullptr;
                 }
             }
         }
@@ -2222,16 +2229,16 @@ namespace AZ
 
     size_t Internal::AZStdArrayEvents::GetIndex() const
     {
-        if (m_indices)
+        if (g_AZStdArrayEventsIndices)
         {
-            if ((reinterpret_cast<uintptr_t>(m_indices) & 1) == 1)
+            if ((reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) & 1) == 1)
             {
                 // The first bit is used to indicate this is a regular index instead of a pointer so shift down one to get the actual index.
-                return reinterpret_cast<uintptr_t>(m_indices) >> 1;
+                return reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) >> 1;
             }
             else
             {
-                const Stack* stack = reinterpret_cast<const Stack*>(m_indices);
+                const Stack* stack = reinterpret_cast<const Stack*>(g_AZStdArrayEventsIndices);
                 return stack->top();
             }
         }
@@ -2244,18 +2251,18 @@ namespace AZ
 
     void Internal::AZStdArrayEvents::Increment()
     {
-        if (m_indices)
+        if (g_AZStdArrayEventsIndices)
         {
-            if ((reinterpret_cast<uintptr_t>(m_indices) & 1) == 1)
+            if ((reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) & 1) == 1)
             {
                 // Increment by 2 because the first bit is used to indicate whether or not a stack is used so the real
                 //      value starts one bit later.
-                size_t index = reinterpret_cast<uintptr_t>(m_indices) + (1 << 1);
-                m_indices = reinterpret_cast<void*>(index);
+                size_t index = reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) + (1 << 1);
+                g_AZStdArrayEventsIndices = reinterpret_cast<void*>(index);
             }
             else
             {
-                Stack* stack = reinterpret_cast<Stack*>(m_indices);
+                Stack* stack = reinterpret_cast<Stack*>(g_AZStdArrayEventsIndices);
                 stack->top()++;
             }
         }
@@ -2267,19 +2274,19 @@ namespace AZ
 
     void Internal::AZStdArrayEvents::Decrement()
     {
-        if (m_indices)
+        if (g_AZStdArrayEventsIndices)
         {
-            if ((reinterpret_cast<uintptr_t>(m_indices) & 1) == 1)
+            if ((reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) & 1) == 1)
             {
                 // Decrement by 2 because the first bit is used to indicate whether or not a stack is used so the real
                 //      value starts one bit later. This assumes that index is check to be larger than 0 before calling
                 //      this function.
-                size_t index = reinterpret_cast<uintptr_t>(m_indices) - (1 << 1);
-                m_indices = reinterpret_cast<void*>(index);
+                size_t index = reinterpret_cast<uintptr_t>(g_AZStdArrayEventsIndices) - (1 << 1);
+                g_AZStdArrayEventsIndices = reinterpret_cast<void*>(index);
             }
             else
             {
-                Stack* stack = reinterpret_cast<Stack*>(m_indices);
+                Stack* stack = reinterpret_cast<Stack*>(g_AZStdArrayEventsIndices);
                 stack->top()--;
             }
         }
@@ -2291,7 +2298,7 @@ namespace AZ
 
     bool Internal::AZStdArrayEvents::IsEmpty() const
     {
-        return m_indices == nullptr;
+        return g_AZStdArrayEventsIndices == nullptr;
     }
 
     bool SerializeContext::IsTypeReflected(AZ::Uuid typeId) const

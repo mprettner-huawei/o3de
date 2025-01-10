@@ -13,7 +13,7 @@
 
 namespace AZ::Internal
 {
-    template struct AggregateTypes<Crc32>;
+    template struct AZ_DLL_EXPORT AggregateTypes<Crc32>;
 }
 
 namespace AZ

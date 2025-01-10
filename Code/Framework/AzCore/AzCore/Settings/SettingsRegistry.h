@@ -34,9 +34,9 @@ namespace AZ
     public:
         AZ_RTTI(AZ::SettingsRegistryInterface, "{D62619D8-0C0B-4D9F-9FE8-F8EBC330DC55}");
 
-        static constexpr char Extension[] = "setreg";
-        static constexpr char PatchExtension[] = "setregpatch";
-        static constexpr char RegistryFolder[] = "Registry";
+        static constexpr const char* Extension = "setreg";
+        static constexpr const char* PatchExtension = "setregpatch";
+        static constexpr const char* RegistryFolder = "Registry";
 
         static constexpr char DevUserRegistryFolder[] = "user" AZ_CORRECT_FILESYSTEM_SEPARATOR_STRING "Registry";
 

@@ -242,6 +242,14 @@ static constexpr AZ::ThreadSafety ConsoleThreadSafety<_TYPE, std::enable_if_t<st
     using CVarDataWrapperType##_NAME = AZ::ConsoleDataWrapper<_TYPE, ConsoleThreadSafety<_TYPE>>; \
     extern CVarDataWrapperType##_NAME _NAME;
 
+//! Cvar macro that externs a console variable and exports it to the shared library interface.
+//! @param _TYPE the data type of the cvar to extern
+//! @param _NAME the name of the cvar to extern
+//! @param _ExportMacro the name of the export macro of the shared library
+#define AZ_CVAR_EXTERNED_EXPORT(_TYPE, _NAME, _ExportMacro) \
+    using CVarDataWrapperType##_NAME = AZ::ConsoleDataWrapper<_TYPE, ConsoleThreadSafety<_TYPE>>; \
+    _ExportMacro extern CVarDataWrapperType##_NAME _NAME;
+
 //! Implements a console functor for a class member function.
 //! @param _CLASS the class that the function gets invoked on
 //! @param _FUNCTION the method to invoke

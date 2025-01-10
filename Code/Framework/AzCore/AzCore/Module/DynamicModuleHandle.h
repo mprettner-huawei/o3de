@@ -142,7 +142,7 @@ namespace AZ
     /// Implementations should attach to the environment.
     /// \param sharedEnvironment is an \ref AZ::EnvironmentInstance.
     using InitializeDynamicModuleFunction = void(*)();
-    const char InitializeDynamicModuleFunctionName[] = "InitializeDynamicModule";
+    constexpr const char InitializeDynamicModuleFunctionName[] = "InitializeDynamicModule";
 
     /// \code
     /// extern "C" AZ_DLL_EXPORT
@@ -151,7 +151,7 @@ namespace AZ
     /// The very last function invoked in a dynamic module.
     /// Implementations should detach from the AZ::Environment.
     using UninitializeDynamicModuleFunction = void(*)();
-    const char UninitializeDynamicModuleFunctionName[] = "UninitializeDynamicModule";
+    constexpr const char UninitializeDynamicModuleFunctionName[] = "UninitializeDynamicModule";
 
     /// \code
     /// extern "C" AZ_DLL_EXPORT
@@ -160,7 +160,7 @@ namespace AZ
     /// Function by which a dynamic module creates its AZ::Module class.
     /// This will be called after InitializeDynamicModule().
     using CreateModuleClassFunction = AZ::Module * (*)();
-    const char CreateModuleClassFunctionName[] = "CreateModuleClass";
+    constexpr char CreateModuleClassFunctionName[] = "CreateModuleClass";
 
     /// \code
     /// extern "C" AZ_DLL_EXPORT
@@ -169,5 +169,5 @@ namespace AZ
     /// Function by which a dynamic module destroys its AZ::Module class.
     /// This will be callled before UninitializeDynamicModule().
     using DestroyModuleClassFunction = void(*)(AZ::Module* module);
-    const char DestroyModuleClassFunctionName[] = "DestroyModuleClass";
+    constexpr const char DestroyModuleClassFunctionName[] = "DestroyModuleClass";
 } // namespace AZ

@@ -44,7 +44,7 @@ namespace AZ
                 && IsClose(m_segmentFraction, splineAddress.m_segmentFraction, s_segmentFractionEpsilon);
         }
 
-        static const float s_segmentFractionEpsilon; ///< Epsilon value for segment fraction spline address comparison.
+        static constexpr float s_segmentFractionEpsilon = 0.001f; ///< Epsilon value for segment fraction spline address comparison.
     };
 
     /**
@@ -229,7 +229,7 @@ namespace AZ
         virtual void OnSplineChanged();
 
     protected:
-        static const float s_splineEpsilon; ///< Epsilon value for splines to use to check approximate results.
+        static constexpr float s_splineEpsilon = 0.00001f; ///< Epsilon value for splines to use to check approximate results.
 
         virtual void OnVertexAdded(size_t index); ///< Internal function to be overridden by derived spline spline to handle custom logic when a vertex is added.
         virtual void OnVerticesSet(); ///< Internal function to be overridden by derived spline spline to handle custom logic when all vertices are set.

@@ -10,16 +10,12 @@
 
 #include <AzCore/Memory/SystemAllocator.h>
 #include <AzCore/Math/Crc.h>
+#include <AzCore/Console/ILogger.h>
 #include <AzCore/Debug/TraceMessageBus.h>
 #include <AzCore/std/containers/unordered_map.h>
 #include <AzCore/Console/IConsole.h>
 
 #include <CryAssert.h>
-
-namespace AZ::Debug
-{
-    AZ_CVAR_EXTERNED(int, bg_traceLogLevel);
-}
 
 /**
  * Hook Trace bus so we can funnel AZ asserts, warnings, etc to CryEngine.

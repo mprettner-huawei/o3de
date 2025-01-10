@@ -62,8 +62,8 @@ namespace AZ
     };
 
     // Template is externed here and explicitly instantiated in the cpp file
-    extern template class HphaSchemaBase<false>;
-    extern template class HphaSchemaBase<true>;
+    extern template class AZCORE_API_EXTERN HphaSchemaBase<false>;
+    extern template class AZCORE_API_EXTERN HphaSchemaBase<true>;
 
     namespace Internal
     {

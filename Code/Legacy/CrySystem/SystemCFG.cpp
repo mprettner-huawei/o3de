@@ -55,6 +55,8 @@
 #include AZ_RESTRICTED_FILE(SystemCFG_cpp)
 #endif
 
+#pragma comment(lib, "version.lib")
+
 //////////////////////////////////////////////////////////////////////////
 const SFileVersion& CSystem::GetFileVersion()
 {

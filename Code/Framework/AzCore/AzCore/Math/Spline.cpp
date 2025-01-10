@@ -17,8 +17,6 @@
 
 namespace AZ
 {
-    const float Spline::s_splineEpsilon = 0.00001f;
-    const float SplineAddress::s_segmentFractionEpsilon = 0.001f;
     static const float s_projectRayLength = 1000.0f;
     static const u16 s_minGranularity = 2;
     static const u16 s_maxGranularity = 64;

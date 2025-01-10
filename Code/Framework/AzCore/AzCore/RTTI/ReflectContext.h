@@ -377,7 +377,7 @@ namespace AZ
         T   m_data;
     };
 
-    extern template class AttributeData<Crc32>;
+    extern template class AZCORE_API_EXTERN AttributeData<Crc32>;
 
     /**
     * Generic attribute for class member data, we use the object instance to access member data.

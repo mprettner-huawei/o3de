@@ -513,13 +513,6 @@ namespace AZ
             void Increment();
             void Decrement();
             bool IsEmpty() const;
-
-        private:
-            // To avoid allocating memory for the stack when there's only one AZStd::array being tracked, m_indices is used to both
-            // store an integer value for the index, or when there's nested AZStd::arrays, an AZStd::stack. To tell the two apart
-            // the least significant bit is set to 1 if an integer value is stored and 0 if m_indices points to an AZStd::stack.
-            // Because the lsb is used for storing the indicator bit, the stored value needs to be shifted down to get the actual index.
-            static AZ_THREAD_LOCAL void* m_indices;
         };
         template<typename T, size_t N>
         class AZStdArrayContainer

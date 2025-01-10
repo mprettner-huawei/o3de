@@ -81,35 +81,35 @@ namespace AZ::IO
     template class PathIterator<const FixedMaxPath>;
 
     // Swap function instantiations
-    template void swap<AZStd::string>(Path& lhs, Path& rhs) noexcept;
-    template void swap<FixedMaxPathString>(FixedMaxPath& lhs, FixedMaxPath& rhs) noexcept;
+    template AZ_DLL_EXPORT void swap<AZStd::string>(Path& lhs, Path& rhs) noexcept;
+    template AZ_DLL_EXPORT void swap<FixedMaxPathString>(FixedMaxPath& lhs, FixedMaxPath& rhs) noexcept;
 
     // Hash function instantiations
-    template size_t hash_value<AZStd::string>(const Path& pathToHash);
-    template size_t hash_value<FixedMaxPathString>(const FixedMaxPath& pathToHash);
+    template AZ_DLL_EXPORT size_t hash_value<AZStd::string>(const Path& pathToHash);
+    template AZ_DLL_EXPORT size_t hash_value<FixedMaxPathString>(const FixedMaxPath& pathToHash);
 
     // Append operator instantiations
-    template BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs, const PathView& rhs);
-    template BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs, const PathView& rhs);
-    template BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs, AZStd::string_view rhs);
-    template BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs, AZStd::string_view rhs);
-    template BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs,
+    template AZ_DLL_EXPORT BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs, const PathView& rhs);
+    template AZ_DLL_EXPORT BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs, const PathView& rhs);
+    template AZ_DLL_EXPORT BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs, AZStd::string_view rhs);
+    template AZ_DLL_EXPORT BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs, AZStd::string_view rhs);
+    template AZ_DLL_EXPORT BasicPath<AZStd::string> operator/<AZStd::string>(const BasicPath<AZStd::string>& lhs,
         const typename BasicPath<AZStd::string>::value_type* rhs);
-    template BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs,
+    template AZ_DLL_EXPORT BasicPath<FixedMaxPathString> operator/<FixedMaxPathString>(const BasicPath<FixedMaxPathString>& lhs,
         const typename BasicPath<FixedMaxPathString>::value_type* rhs);
 
     // Iterator compare instantiations
-    template bool operator==<const PathView>(const PathIterator<const PathView>& lhs,
+    template AZ_DLL_EXPORT bool operator==<const PathView>(const PathIterator<const PathView>& lhs,
         const PathIterator<const PathView>& rhs);
-    template bool operator==<const Path>(const PathIterator<const Path>& lhs,
+    template AZ_DLL_EXPORT bool operator==<const Path>(const PathIterator<const Path>& lhs,
         const PathIterator<const Path>& rhs);
-    template bool operator==<const FixedMaxPath>(const PathIterator<const FixedMaxPath>& lhs,
+    template AZ_DLL_EXPORT bool operator==<const FixedMaxPath>(const PathIterator<const FixedMaxPath>& lhs,
         const PathIterator<const FixedMaxPath>& rhs);
-    template bool operator!=<const PathView>(const PathIterator<const PathView>& lhs,
+    template AZ_DLL_EXPORT bool operator!=<const PathView>(const PathIterator<const PathView>& lhs,
         const PathIterator<const PathView>& rhs);
-    template bool operator!=<const Path>(const PathIterator<const Path>& lhs,
+    template AZ_DLL_EXPORT bool operator!=<const Path>(const PathIterator<const Path>& lhs,
         const PathIterator<const Path>& rhs);
-    template bool operator!=<const FixedMaxPath>(const PathIterator<const FixedMaxPath>& lhs,
+    template AZ_DLL_EXPORT bool operator!=<const FixedMaxPath>(const PathIterator<const FixedMaxPath>& lhs,
         const PathIterator<const FixedMaxPath>& rhs);
 }
 

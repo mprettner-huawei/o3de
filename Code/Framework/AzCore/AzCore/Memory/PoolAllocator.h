@@ -27,7 +27,7 @@ namespace AZ
         : public IAllocator
     {
     public:
-        AZ_TYPE_INFO_WITH_NAME_DECL(PoolSchema);
+        AZ_TYPE_INFO_WITH_NAME_DECL_EXPORT(PoolSchema, AZCORE_API);
 
         PoolSchema();
         ~PoolSchema();
@@ -135,8 +135,6 @@ namespace AZ::Internal
     template<class Schema>
     class PoolAllocatorHelper;
 
-    AZ_TYPE_INFO_TEMPLATE_WITH_NAME_DECL(PoolAllocatorHelper, AZ_TYPE_INFO_CLASS);
-
     /*!
     * Template you can use to create your own thread pool allocators, as you can't inherit from ThreadPoolAllocator.
     * This is the case because we use tread local storage and we need separate "static" instance for each allocator.
@@ -181,14 +179,16 @@ namespace AZ::Internal
         PoolAllocatorHelper& operator=(const PoolAllocatorHelper&) = delete;
     };
 
-    extern template class PoolAllocatorHelper<PoolSchema>;
+    AZ_RTTI_NO_TYPE_INFO_IMPL((PoolAllocatorHelper, AZ_TYPE_INFO_CLASS), Base);
+    AZ_TYPE_INFO_TEMPLATE(PoolAllocatorHelper, PoolAllocatorHelperTemplateId, AZ_TYPE_INFO_CLASS);
+    extern template class AZCORE_API_EXTERN PoolAllocatorHelper<PoolSchema>;
 }
 
 namespace AZ
 {
     // Extern the PoolAllocatorHelper<PoolSchema> AZ::AzTypeInfo template to
     // to reduce instantations
-    extern template struct AzTypeInfo<Internal::PoolAllocatorHelper<PoolSchema>>;
+    extern template struct AZCORE_API_EXTERN AzTypeInfo<Internal::PoolAllocatorHelper<PoolSchema>>;
     /*!
      * Pool allocator
      * Specialized allocation for extremely fast small object memory allocations.
@@ -196,9 +196,12 @@ namespace AZ
      * Pool Allocator is NOT thread safe, if you if need a thread safe version
      * use PoolAllocatorThreadSafe or do the sync yourself.
      */
+    AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING
     class AZCORE_API PoolAllocator
         : public Internal::PoolAllocatorHelper<PoolSchema>
     {
+        AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING
+
     public:
         AZ_CLASS_ALLOCATOR(PoolAllocator, SystemAllocator);
 
@@ -215,16 +218,19 @@ namespace AZ
     class ThreadPoolAllocator;
     namespace Internal
     {
-        extern template class PoolAllocatorHelper<ThreadPoolSchemaHelper<ThreadPoolAllocator>>;
+        extern template class AZCORE_API_EXTERN PoolAllocatorHelper<ThreadPoolSchemaHelper<ThreadPoolAllocator>>;
     }
 
     /*!
      * Thread safe pool allocator. If you want to create your own thread pool heap,
      * inherit from ThreadPoolBase, as we need unique static variable for allocator type.
      */
+   AZ_PUSH_DISABLE_DLL_EXPORT_BASECLASS_WARNING
     class AZCORE_API ThreadPoolAllocator final
         : public ThreadPoolBase<ThreadPoolAllocator>
     {
+        AZ_POP_DISABLE_DLL_EXPORT_BASECLASS_WARNING
+
     public:
         AZ_CLASS_ALLOCATOR(ThreadPoolAllocator, SystemAllocator);
 

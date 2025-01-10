@@ -38,7 +38,7 @@ namespace AZ
         AZCORE_API AZ::u64 FileTimeToMSecsSincePosixEpoch(AZ::u64 fileTime);
 
         using HandleType = AZ::u32;
-        static const HandleType InvalidHandle = 0;
+        constexpr HandleType InvalidHandle = 0;
 
         enum class SeekType : AZ::u32
         {

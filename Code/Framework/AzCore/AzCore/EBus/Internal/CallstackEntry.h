@@ -191,7 +191,7 @@ namespace AZ
             C*& GetEntry() const;
         };
 
-        // This functino needs to be defined outside of the class definition such that it can get explicitly instantiated correctly. This is
+        // This function needs to be defined outside of the class definition such that it can get explicitly instantiated correctly. This is
         // important when using an EBus across module boundaries, as otherwise a callstack cannot traverse the module boundary.
         template <class C>
         C*& EBusCallstackStorage<C, true>::GetEntry() const

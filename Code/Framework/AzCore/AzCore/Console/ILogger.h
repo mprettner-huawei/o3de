@@ -13,10 +13,16 @@
 #include <AzCore/EBus/EBus.h>
 #include <AzCore/EBus/Event.h>
 #include <AzCore/RTTI/RTTI.h>
+#include <AzCore/Console/IConsole.h>
 #include <stdarg.h>
 
 namespace AZ
 {
+    namespace Debug
+    {
+        AZ_CVAR_EXTERNED_EXPORT(int, bg_traceLogLevel, AZCORE_API);
+    }
+
     //! This essentially maps to standard syslog logging priorities to allow the logger to easily plug into standard logging services
     enum class LogLevel : int8_t { Trace = 1, Debug = 2, Info = 3, Notice = 4, Warn = 5, Error = 6, Fatal = 7 };
 

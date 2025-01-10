@@ -29,6 +29,8 @@
 
 #include <dbt.h>
 
+#pragma comment(lib, "version.lib")
+
 namespace Editor
 {
     EditorQtApplication* EditorQtApplication::newInstance(int& argc, char** argv)

@@ -65,6 +65,7 @@ namespace AZ
 
         private:
             friend class AddressTypeSerializer;
+            friend struct AZStd::Internal::construct<AZStd::vector<AddressTypeElement>::iterator, AddressTypeElement, false>;
 
             AddressTypeElement();               // Default constructor to supply an empty Element to AddressTypeSerializer to fill out
             AZ::TypeId m_addressClassTypeId;    // TypeId of the class element at the time it was stored

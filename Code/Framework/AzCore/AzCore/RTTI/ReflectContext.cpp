@@ -164,6 +164,5 @@ namespace AZ
         }
     }
 
-    template class AttributeData<Crc32>;
-
+    template class AZ_DLL_EXPORT AttributeData<Crc32>;
 }

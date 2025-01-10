@@ -7,6 +7,8 @@
  */
 #pragma once
 
+#include <AzCore/base.h>
+
 #ifdef __APPLE__
 #include <xlocale.h>
 #else

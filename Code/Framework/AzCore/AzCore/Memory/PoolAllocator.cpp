@@ -39,8 +39,6 @@ namespace AZ
 
 namespace AZ::Internal
 {
-    AZ_TYPE_INFO_TEMPLATE_WITH_NAME_IMPL(PoolAllocatorHelper, "PoolAllocatorHelper", PoolAllocatorHelperTemplateId, AZ_TYPE_INFO_CLASS);
-    AZ_RTTI_NO_TYPE_INFO_IMPL((PoolAllocatorHelper, AZ_TYPE_INFO_CLASS), Base);
     template class PoolAllocatorHelper<PoolSchema>;
 
     // Also instantiate the PoolAllocatorHelper for the Thread Pool Allocator

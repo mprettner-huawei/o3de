@@ -19,8 +19,8 @@ namespace AZ
     namespace SfmtInternal
     {
         //
-        static const int MEXP = 19937;
-        static const int N    = MEXP / 128 + 1;
+        constexpr int MEXP = 19937;
+        constexpr int N    = MEXP / 128 + 1;
 
         union W128_T
         {

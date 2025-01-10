@@ -468,14 +468,14 @@ namespace AZ
 namespace AZ
 {
     //! Add GetO3deTypeName and GetO3deTypeId declarations for commonly used O3DE types
-    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(AZ::Uuid);
-    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(PlatformID);
+    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(AZ::Uuid, AZCORE_API);
+    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(PlatformID, AZCORE_API);
 }
 
 namespace AZStd
 {
-    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(AZStd::monostate);
-    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(AZStd::allocator);
+    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(AZStd::monostate, AZSTD_API);
+    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(AZStd::allocator, AZSTD_API);
 
     // Adding specialization of AZStd container types in the AZStd namespace
     // to allow ADL for these types when invoking GetO3deTypeName/GetO3deTypeId from the AzTypeInfo template

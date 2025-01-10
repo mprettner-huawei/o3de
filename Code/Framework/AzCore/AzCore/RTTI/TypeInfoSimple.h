@@ -94,9 +94,9 @@ namespace AZ
 
     // Helper Macros which provides declaration of TypeInfo methods
     // Useful for reducing build times by moving implementation to a translation unit
-    #define AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(_ClassName) \
-        AZ::TypeNameString GetO3deTypeName(AZ::Adl, AZStd::type_identity<_ClassName>); \
-        AZ::TypeId GetO3deTypeId(AZ::Adl, AZStd::type_identity<_ClassName>);
+    #define AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(_ClassName, _ExportMacro) \
+        _ExportMacro AZ::TypeNameString GetO3deTypeName(AZ::Adl, AZStd::type_identity<_ClassName>); \
+        _ExportMacro AZ::TypeId GetO3deTypeId(AZ::Adl, AZStd::type_identity<_ClassName>);
 
     #define AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME(_ClassName, _DisplayName, _ClassUuid) \
         AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_HELPER(_ClassName, _DisplayName, _ClassUuid, constexpr)
@@ -112,21 +112,21 @@ namespace AZ
         AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_HELPER(_ClassName, _DisplayName, _ClassUuid, inline)
 
     //! Add GetO3deTypeName and GetO3deTypeId overloads for built-in types
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(char);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::s8);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(short);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(int);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(long);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::s64);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned char);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned short);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned int);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned long);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::u64);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(float);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(double);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(bool);
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(void);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(char, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::s8, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(short, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(int, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(long, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::s64, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned char, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned short, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned int, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(unsigned long, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(AZ::u64, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(float, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(double, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(bool, AZCORE_API);
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(void, AZCORE_API);
 
     /**
     * Use this macro outside a class to allow it to be identified across modules and serialized (in different contexts).
@@ -154,7 +154,12 @@ namespace AZ
 
     // Adds declaration TypeInfo function overloads for a type(class, enum or fundamental)
     #define AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(_ClassName) \
-        AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(_ClassName)
+        AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(_ClassName, )
+
+    // Adds declaration TypeInfo function overloads for a type(class, enum or fundamental) and exports them to the shared library interface
+    // by supplying an export macro (eg. AZCORE_API) as second parameter
+    #define AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(_ClassName, _ExportMacro) \
+        AZ_TYPE_INFO_INTERNAL_SPECIALIZE_WITH_NAME_DECL(_ClassName, _ExportMacro)
 
     // Adds function definition for TypeInfo functions
     // NOTE: This needs to be in the same namespace as the declaration

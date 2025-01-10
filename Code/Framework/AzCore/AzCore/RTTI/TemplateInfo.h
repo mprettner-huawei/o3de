@@ -586,7 +586,7 @@ namespace AZ::AzGenericTypeInfo
 *         to substitute for the template arguments
 */
 #define AZ_TYPE_INFO_TEMPLATE_WITH_NAME_DECL(_TemplateName, ...) \
-    AZ_TYPE_INFO_INTERNAL_SPECIALIZED_TEMPLATE_BOTHFIX_UUID_DECL(_TemplateName, __VA_ARGS__)
+    AZ_TYPE_INFO_INTERNAL_SPECIALIZED_TEMPLATE_BOTHFIX_UUID_DECL(_TemplateName, , __VA_ARGS__)
 
 /**
 * Provides definitions for type info overloads that support class templates

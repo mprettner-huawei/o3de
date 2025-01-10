@@ -75,7 +75,7 @@ namespace AZ
         FallbackToDefaultWrite,
         AbortWrite
     };
-    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL(ObjectStreamWriteOverrideResponse);
+    AZ_TYPE_INFO_SPECIALIZE_WITH_NAME_DECL_EXPORT(ObjectStreamWriteOverrideResponse, AZCORE_API);
 }
 namespace AZ::Edit
 {

@@ -450,7 +450,6 @@ set(FILES
     Module/AZStdInstantiations.cpp
     Module/DynamicModuleHandle.cpp
     Module/DynamicModuleHandle.h
-    Module/EBusInstantiations.cpp
     Module/Environment.cpp
     Module/Environment.h
     Module/Module.cpp

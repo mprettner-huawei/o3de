@@ -19,6 +19,3 @@ extern "C" AZ_DLL_EXPORT void CleanUpRpiPublicGenericClassInfo()
 }
 
 #endif
-
-DECLARE_EBUS_INSTANTIATION_DLL_MULTI_ADDRESS(RPI::SceneNotification);
-DECLARE_EBUS_INSTANTIATION_DLL_MULTI_ADDRESS(RPI::ShaderReloadNotifications);

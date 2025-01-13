@@ -38,4 +38,4 @@ namespace AZ::RPI
 
 } // namespace AZ::RPI
 
-DECLARE_EBUS_EXTERN_DLL_SINGLE_ADDRESS(RPI::PerformaceCollectionNotification);
+DECLARE_EBUS_EXTERN_DLL_SINGLE_ADDRESS(RPI::PerformaceCollectionNotification, ATOM_RPI_PUBLIC_API);

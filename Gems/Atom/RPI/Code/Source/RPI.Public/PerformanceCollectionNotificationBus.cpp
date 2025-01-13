@@ -10,8 +10,6 @@
 
 #include <Atom/RPI.Public/PerformanceCollectionNotificationBus.h>
 
-DECLARE_EBUS_INSTANTIATION_DLL_SINGLE_ADDRESS(RPI::PerformaceCollectionNotification);
-
 namespace AZ::RPI
 {
     /**

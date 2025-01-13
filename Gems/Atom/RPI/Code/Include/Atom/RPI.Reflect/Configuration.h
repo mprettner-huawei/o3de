@@ -12,10 +12,13 @@
 
 #if defined(AZ_MONOLITHIC_BUILD)
     #define ATOM_RPI_REFLECT_API
+    #define ATOM_RPI_REFLECT_API_EXTERN
 #else
     #if defined(ATOM_RPI_REFLECT_EXPORTS)
-        #define ATOM_RPI_REFLECT_API AZ_DLL_EXPORT
+        #define ATOM_RPI_REFLECT_API        AZ_DLL_EXPORT
+        #define ATOM_RPI_REFLECT_API_EXTERN AZ_DLL_EXPORT_EXTERN
     #else
-        #define ATOM_RPI_REFLECT_API AZ_DLL_IMPORT
+        #define ATOM_RPI_REFLECT_API        AZ_DLL_IMPORT
+        #define ATOM_RPI_REFLECT_API_EXTERN AZ_DLL_IMPORT_EXTERN
     #endif
 #endif

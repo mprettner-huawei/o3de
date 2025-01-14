@@ -681,10 +681,8 @@ namespace AZ
         class PerModuleGenericClassInfo;
         AZStd::unordered_set<PerModuleGenericClassInfo*>  m_perModuleSet; ///< Stores the static PerModuleGenericClass structures keeps track of reflected GenericClassInfo per module
 
-        AZCORE_API friend PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
+        friend PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
     };
-
-    AZCORE_API SerializeContext::PerModuleGenericClassInfo& GetCurrentSerializeContextModule();
 } // namespace AZ
 
 namespace AZ
@@ -2235,6 +2233,13 @@ namespace AZ
         using SerializeContextSet = AZStd::unordered_set<SerializeContext*>;
         SerializeContextSet m_serializeContextSet;
     };
+
+    // Take advantage of static variables being unique per dll module to clean up module specific registered classes when the module unloads
+    inline SerializeContext::PerModuleGenericClassInfo& GetCurrentSerializeContextModule()
+    {
+        static SerializeContext::PerModuleGenericClassInfo s_ModuleCleanupInstance;
+        return s_ModuleCleanupInstance;
+    }
 
     template<typename T>
     typename SerializeGenericTypeInfo<T>::ClassInfoType* SerializeContext::PerModuleGenericClassInfo::CreateGenericClassInfo()

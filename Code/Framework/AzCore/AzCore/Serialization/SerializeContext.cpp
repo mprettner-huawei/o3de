@@ -2381,13 +2381,6 @@ namespace AZ
         auto genericClassInfoFoundIt = m_moduleLocalGenericClassInfos.find(genericTypeId);
         return genericClassInfoFoundIt != m_moduleLocalGenericClassInfos.end() ? genericClassInfoFoundIt->second : nullptr;
     }
-
-    // Take advantage of static variables being unique per dll module to clean up module specific registered classes when the module unloads
-    SerializeContext::PerModuleGenericClassInfo& GetCurrentSerializeContextModule()
-    {
-        static SerializeContext::PerModuleGenericClassInfo s_ModuleCleanupInstance;
-        return s_ModuleCleanupInstance;
-    }
 } // namespace AZ
 
 namespace AZ::Serialize

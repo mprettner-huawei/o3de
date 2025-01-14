@@ -28,6 +28,8 @@ AZ_POP_DISABLE_WARNING
 
 #endif // HAVE_BENCHMARK
 
+extern "C" void CleanUpAzCoreGenericClassInfo();
+
 namespace UnitTest
 {
     class LeakDetectionBase
@@ -66,6 +68,7 @@ namespace UnitTest
             if (m_cleanUpGenericClassInfo)
             {
                 AZ::GetCurrentSerializeContextModule().Cleanup();
+                CleanUpAzCoreGenericClassInfo();
             }
             AZ::AllocatorManager::Instance().GarbageCollect();
 

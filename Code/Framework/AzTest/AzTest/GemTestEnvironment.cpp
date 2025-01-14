@@ -14,6 +14,8 @@
 #include <AzCore/IO/Streamer/StreamerComponent.h>
 #include <AzCore/Memory/AllocatorManager.h>
 
+extern "C" void CleanUpAzCoreGenericClassInfo();
+
 namespace AZ
 {
     namespace Test
@@ -193,6 +195,7 @@ namespace AZ
             m_parameters = nullptr;
 
             AZ::GetCurrentSerializeContextModule().Cleanup();
+            CleanUpAzCoreGenericClassInfo();
 
             UnitTest::TraceBusHook::TeardownEnvironment();
 

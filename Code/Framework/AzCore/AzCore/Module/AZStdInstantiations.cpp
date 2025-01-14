@@ -7,9 +7,17 @@
  */
 
 #include <AzCore/PlatformDef.h>
+#include <AzCore/Serialization/SerializeContext.h>
 #include <AzCore/std/smart_ptr/intrusive_base.h>
 
 namespace AZStd
 {
     template class AZ_DLL_EXPORT intrusive_refcount<atomic_uint>;
 }
+
+#if !defined(AZ_MONOLITHIC_BUILD)
+extern "C" AZ_DLL_EXPORT void CleanUpAzCoreGenericClassInfo()
+{
+    AZ::GetCurrentSerializeContextModule().Cleanup();
+}
+#endif

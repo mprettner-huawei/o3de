@@ -556,6 +556,7 @@ set(FILES
     UI/UICore/ProgressShield.hxx
     UI/UICore/ProgressShield.cpp
     UI/UICore/ProgressShield.ui
+    UI/UICore/QKeyCombination.h
     UI/UICore/QTreeViewStateSaver.hxx
     UI/UICore/QTreeViewStateSaver.cpp
     UI/UICore/QWidgetSavedState.h

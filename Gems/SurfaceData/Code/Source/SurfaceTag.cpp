@@ -82,7 +82,7 @@ namespace SurfaceData
                 ->Attribute(AZ::Script::Attributes::Category, "Vegetation")
                 ->Attribute(AZ::Script::Attributes::Module, "surface_data")
                 ->Method("SetTag", &SurfaceTag::SetTag)
-                ->Method("Equal", &SurfaceTag::operator==)
+                ->Method("Equal", &SurfaceTag::Equals)
                 ->Attribute(AZ::Script::Attributes::Operator, AZ::Script::Attributes::OperatorType::Equal)
                 ->Method(
                     "ToString",

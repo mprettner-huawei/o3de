@@ -518,7 +518,7 @@ namespace AzToolsFramework
                     // cycle to previous 'selected' ComponentMode actions
                     const ActionOverride previousComponentModeAction = ActionOverride()
                         .SetUri(s_previousComponentMode)
-                        .SetKeySequence(QKeySequence(Qt::SHIFT + Qt::Key_Tab))
+                        .SetKeySequence(QKeySequence(Qt::SHIFT, Qt::Key_Tab))
                         .SetTitle(s_previousActiveComponentModeTitle)
                         .SetTip(s_prevActiveComponentModeDesc)
                         .SetCallback([]()

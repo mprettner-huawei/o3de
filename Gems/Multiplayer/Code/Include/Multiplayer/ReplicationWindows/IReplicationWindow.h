@@ -20,7 +20,7 @@ namespace Multiplayer
 
     struct EntityReplicationData 
     {
-        EntityReplicationData() = default;
+        //EntityReplicationData() = default;
         NetEntityRole m_netEntityRole = NetEntityRole::InvalidRole;
         float m_priority = 0.0f;
     };

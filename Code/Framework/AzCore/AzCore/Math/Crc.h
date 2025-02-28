@@ -91,7 +91,11 @@ namespace AZ
         constexpr operator u32() const               { return m_value; }
 
         constexpr bool operator==(Crc32 rhs) const   { return (m_value == rhs.m_value); }
+        constexpr bool operator==(u32 rhs) const     { return (m_value == rhs); }
+        constexpr friend bool operator==(u32 lhs, Crc32 rhs) { return (lhs == rhs.m_value); }
         constexpr bool operator!=(Crc32 rhs) const   { return (m_value != rhs.m_value); }
+        constexpr bool operator!=(u32 rhs) const     { return (m_value != rhs); }
+        constexpr friend bool operator!=(u32 lhs, Crc32 rhs) { return (lhs != rhs.m_value); }
 
         constexpr bool operator!() const             { return (m_value == 0); }
 

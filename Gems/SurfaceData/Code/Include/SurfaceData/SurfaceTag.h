@@ -43,6 +43,11 @@ namespace SurfaceData
         AZ_INLINE operator AZ::Crc32() const;
         AZ_INLINE operator AZ::u32() const;
 
+        bool operator==(const AZ::Crc32& rhs) const { return rhs == m_surfaceTagCrc; }
+        bool operator!=(const AZ::Crc32& rhs) const { return rhs != m_surfaceTagCrc; }
+
+        bool Equals(const SurfaceTag& other) const { return operator==(other); }
+
         void SetTag(const AZStd::string& value)
         {
             m_surfaceTagCrc = AZ::Crc32(value.data());

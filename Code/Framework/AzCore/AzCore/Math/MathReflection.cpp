@@ -320,7 +320,7 @@ namespace AZ
             Method("GetRandomFloat", &SimpleLcgRandom::GetRandomFloat);
 
         // Crc
-        context.Class<Crc32>()->
+        /*context.Class<Crc32>()->
             Attribute(AZ::Script::Attributes::Scope, AZ::Script::Attributes::ScopeFlags::Common)->
             Attribute(AZ::Script::Attributes::Module, "math")->
             Attribute(AZ::Script::Attributes::ExcludeFrom, AZ::Script::Attributes::ExcludeFlags::All)->
@@ -340,7 +340,7 @@ namespace AZ
             Property("stringValue", nullptr, [](Crc32* thisPtr, AZStd::string_view value) { *thisPtr  = Crc32(value); })->
             Method("CreateCrc32", [](AZStd::string_view value) -> Crc32 { return Crc32(value); }, { { { "value", "String to compute to Crc32" } } })->
             Constructor<AZStd::string_view>()
-            ;
+            ;*/
 
         // Interpolation
         context.Class<InterpolationMode>()->

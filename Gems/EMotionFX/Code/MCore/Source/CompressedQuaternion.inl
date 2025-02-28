@@ -31,10 +31,10 @@ MCORE_INLINE TCompressedQuaternion<StorageType>::TCompressedQuaternion(float xVa
 // constructor
 template <class StorageType>
 MCORE_INLINE TCompressedQuaternion<StorageType>::TCompressedQuaternion(const AZ::Quaternion& quat)
-    : m_x((StorageType)(static_cast<float>(quat.GetX()) * CONVERT_VALUE))
-    , m_y((StorageType)(static_cast<float>(quat.GetY()) * CONVERT_VALUE))
-    , m_z((StorageType)(static_cast<float>(quat.GetZ()) * CONVERT_VALUE))
-    , m_w((StorageType)(static_cast<float>(quat.GetW()) * CONVERT_VALUE))
+    : m_x((StorageType)(static_cast<float>(quat.GetX()) * static_cast<float>(CONVERT_VALUE)))
+    , m_y((StorageType)(static_cast<float>(quat.GetY()) * static_cast<float>(CONVERT_VALUE)))
+    , m_z((StorageType)(static_cast<float>(quat.GetZ()) * static_cast<float>(CONVERT_VALUE)))
+    , m_w((StorageType)(static_cast<float>(quat.GetW()) * static_cast<float>(CONVERT_VALUE)))
 {
 }
 
@@ -44,10 +44,10 @@ template <class StorageType>
 MCORE_INLINE void TCompressedQuaternion<StorageType>::FromQuaternion(const AZ::Quaternion& quat)
 {
     // pack it
-    m_x = (StorageType)(static_cast<float>(quat.GetX()) * CONVERT_VALUE);
-    m_y = (StorageType)(static_cast<float>(quat.GetY()) * CONVERT_VALUE);
-    m_z = (StorageType)(static_cast<float>(quat.GetZ()) * CONVERT_VALUE);
-    m_w = (StorageType)(static_cast<float>(quat.GetW()) * CONVERT_VALUE);
+    m_x = (StorageType)(static_cast<float>(quat.GetX()) * static_cast<float>(CONVERT_VALUE));
+    m_y = (StorageType)(static_cast<float>(quat.GetY()) * static_cast<float>(CONVERT_VALUE));
+    m_z = (StorageType)(static_cast<float>(quat.GetZ()) * static_cast<float>(CONVERT_VALUE));
+    m_w = (StorageType)(static_cast<float>(quat.GetW()) * static_cast<float>(CONVERT_VALUE));
 }
 
 // uncompress into a quaternion

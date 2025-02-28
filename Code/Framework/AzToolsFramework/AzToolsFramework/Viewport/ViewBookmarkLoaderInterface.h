@@ -24,7 +24,7 @@ namespace AzToolsFramework
         AZ_CLASS_ALLOCATOR(ViewBookmark, AZ::SystemAllocator);
         AZ_TYPE_INFO(ViewBookmark, "{9D6601B9-922F-4E90-BEB2-4D3D709DADD7}");
 
-        ViewBookmark() = default;
+        //ViewBookmark() = default;
 
         static void Reflect(AZ::ReflectContext* context);
 

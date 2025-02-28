@@ -11,6 +11,9 @@
 
 namespace AZStd
 {
+    AZ_PUSH_DISABLE_WARNING(4996, "-Wunknown-warning-option")
     using std::is_pod;
-    using std::is_pod_v;
+    AZ_POP_DISABLE_WARNING
+    //template<typename t>
+    //class is_pod
 }

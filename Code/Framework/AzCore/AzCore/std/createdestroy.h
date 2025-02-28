@@ -189,12 +189,13 @@ namespace AZStd
     //! Invokes placement new on the supplied address
     //! Constraints: Only available when the expression
     //! `new (declval<void*>()) T(declval<Args>()...)` is well-formed
-    template <typename T, typename... Args>
+    /*template <typename T, typename... Args>
     constexpr auto construct_at(T* ptr, Args&&... args)
         -> decltype(new (AZStd::declval<void*>()) T(AZStd::forward<Args>(args)...), (T*)nullptr)
     {
         return ::new (ptr) T(AZStd::forward<Args>(args)...);
-    }
+    }*/
+    using std::construct_at;
 }
 
 

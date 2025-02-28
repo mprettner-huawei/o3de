@@ -1741,7 +1741,7 @@ void UiElementComponent::OnPatchEnd(const AZ::DataPatchNodeInfo& patchInfo)
                 }
 
                 // This should be the u64 "Id" element of the EntityId, if not ignore.
-                if (childPatchAddress.back().GetAddressElement() == AZ_CRC_CE("Id"))
+                if (aznumeric_cast<AZ::u32>(childPatchAddress.back().GetAddressElement()) == AZ_CRC_CE("Id"))
                 {
                     // the second to last part of the address is the index in the m_children array
                     AZ::u64 index = childPatchAddress[childPatchAddress.size() - 2].GetAddressElement();

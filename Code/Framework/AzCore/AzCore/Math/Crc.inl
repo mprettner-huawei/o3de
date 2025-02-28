@@ -184,12 +184,12 @@ namespace AZ
     constexpr auto Crc32::Add(const ByteType* data, size_t size, bool forceLowerCase)
         -> AZStd::enable_if_t<sizeof(ByteType) == 1>
     {
-        Combine(Crc32{ data, size, forceLowerCase }, size);
+        Combine(Crc32{ data, size, forceLowerCase }.operator u32(), size);
     }
 
     constexpr void Crc32::Add(AZStd::span<const AZStd::byte> inputSpan)
     {
-        Combine(Crc32{ inputSpan }, inputSpan.size());
+        Combine(Crc32{ inputSpan }.operator u32(), inputSpan.size());
     }
 
     constexpr u32 MatrixTimes(u32* mat, u32 vec)

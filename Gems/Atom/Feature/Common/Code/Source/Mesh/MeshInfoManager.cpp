@@ -141,6 +141,10 @@ namespace AZ::Render
         {
             out.m_flags |= GPU::MeshInfoFlags::SkinnedMesh;
         }
+        if (entry->m_hasClusterGeometryBuffers)
+        {
+            out.m_flags |= GPU::MeshInfoFlags::ClusterGeometryBuffers;
+        }
 
         return out;
     }
